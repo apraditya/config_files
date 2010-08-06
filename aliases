@@ -17,3 +17,35 @@ alias gi="sudo gem install"
 alias giv="sudo gem install -v"
 alias gci="git pull --rebase && rake && git push"
 alias tlf="tail -f"
+
+# My own aliases
+alias rcons="ruby script/console"
+alias rserv="ruby script/server"
+alias rgen="ruby script/generate"
+alias rdest="ruby script/destroy"
+
+# Aliases from Dinesh
+alias ls="ls -alFo"
+alias df="df -h"
+alias psw="ps waxu | grep "
+alias s="source"
+alias du="du -h -d 1"
+alias mv="mv -i"
+alias pu=pushd
+alias po=popd
+alias goo="traceroute -w 2 -q 2 google.com"
+alias poo="ping -t 5 google.com"
+alias cvu="cvs update -Ad 2>/dev/null | grep -v \?"
+alias ci="cvs ci -m"
+alias sshc="ssh -o compression=yes -o compressionlevel=6"
+alias topo="top -o cpu"
+alias rm="rm -v"
+alias nsl="nslookup"
+alias curl="curl -L"
+alias svu="svn update"
+
+# Aliases from anyall.org/.zshrc
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias cgrep='grep --color=always'
+
