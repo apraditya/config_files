@@ -7,7 +7,7 @@ set backspace=indent,eol,start
 
 set nobackup
 set nowritebackup
-set history=50		" keep 50 lines of command line history
+set history=200		" keep 200 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -77,6 +77,15 @@ set laststatus=2
 " \ is the leader character
 let mapleader = "\\"
 
+" Mappings for convenience 
+map <F2> :NERDTreeToggle<CR>
+" Jumping to split views 
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+map ,p "+gp
+
 " Edit the README_FOR_APP (makes :R commands work)
 map <Leader>R :e doc/README_FOR_APP<CR>
 
@@ -136,7 +145,9 @@ imap <C-F> <C-R>=expand("%")<CR>
 vmap P p :call setreg('"', getreg('0')) <CR>
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·
+" (had to comment this out as it cause errors).
+" TODO: Will have to check this matter
+"set list listchars=tab:»·,trail:·
 
 " Edit routes
 command! Rroutes :e config/routes.rb
@@ -174,3 +185,8 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 " Window navigation
 nmap <C-J> <C-W><C-J>
 nmap <C-K> <C-W><C-K>
+
+" Added this to support scss highlight
+" from tpope: http://github.com/tpope/vim-haml/issues#issue/7/comment/254442
+autocmd BufNewFile,BufRead *.scss set filetype=css
+
