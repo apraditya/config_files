@@ -1,3 +1,7 @@
+if [ -e ~/.profile ]
+then source ~/.profile
+fi
+
 # completion
 autoload -U compinit
 compinit
@@ -23,7 +27,9 @@ bindkey ^R history-incremental-search-backward
 setopt prompt_subst
 
 # prompt
-export PS1='[${SSH_CONNECTION+"%n@%m:"}%~] '
+#export PS1='[${SSH_CONNECTION+"%n@%m:"}%~] '
+PROMPT="$(print '%{\e[1;31m%}%m>%{\e[0m%}') "
+RPROMPT="$(print '%{\e[1;36m%}%40<...<%~ %{\e[2;33m%}<%*>%{\e[0m%}')"
 
 # ignore duplicate history entries
 setopt histignoredups
