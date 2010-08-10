@@ -35,4 +35,16 @@ RPROMPT="$(print '%{\e[1;36m%}%40<...<%~ %{\e[2;33m%}<%*>%{\e[0m%}')"
 setopt histignoredups
 
 # keep more history
-export HISTSIZE=200
+export HISTSIZE=30000
+export SAVEHIST=30000
+export HISTFILE=~/.hist_zsh
+# History awesomeness!  see rant at dotfiles.org/~brendano/.inputrc
+# (zsh does not use gnu readline, so doesnt use .inputrc, 
+# but this duplicates those features...)
+setopt inc_append_history
+setopt hist_verify
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_no_store
+setopt hist_reduce_blanks
+setopt hist_expire_dups_first
