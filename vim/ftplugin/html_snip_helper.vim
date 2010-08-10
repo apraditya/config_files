@@ -1,0 +1,1 @@
+../../vim-resources/snipmate.vim/ftplugin/html_snip_helper.vim
