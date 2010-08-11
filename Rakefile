@@ -33,8 +33,8 @@ task :install do
 end # of task :install
 
 namespace :vim do
-  IGNORE = [ /\.gitignore$/, /Rakefile$/, /LICENSE$/i, /README\./i ]
-  basic_plugins = %w( vim-haml nerdtree)
+  IGNORE = [ /\.gitignore$/, /Rakefile$/, /LICENSE$/i, /README\.?/i ]
+  basic_plugins = %w( vim-haml nerdtree vim-rails)
   misc_plugins = %w( snipmate )
   repo_dir = ENV['PWD']
   resources_dir = 'vim-resources'
@@ -88,7 +88,7 @@ def install_vim_plugin(plugin_files, module_dir)
 end
 
 def replace(source, target)
-  system %Q{ rm "#{source}" }
+  system %Q{ rm "#{target}" }
   internal_link(source, target)
 end
 
