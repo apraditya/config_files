@@ -16,3 +16,6 @@
 [submodule "vim-resources/vim-cucumber"]
 	path = vim-resources/vim-cucumber
 	url = http://github.com/tpope/vim-cucumber.git
+[submodule "vim/snippets"]
+	path = vim/snippets
+	url = http://github.com/anveo/snipmate-snippets.git
