@@ -4,3 +4,6 @@
 [submodule "vim-resources/Command-T"]
 	path = vim-resources/Command-T
 	url = http://github.com/wincent/Command-T.git
+[submodule "vim-resources/nerdtree"]
+	path = vim-resources/nerdtree
+	url = http://github.com/scrooloose/nerdtree.git
