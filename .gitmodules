@@ -13,3 +13,6 @@
 [submodule "vim-resources/vim-rails"]
 	path = vim-resources/vim-rails
 	url = http://github.com/tpope/vim-rails.git
+[submodule "vim-resources/vim-cucumber"]
+	path = vim-resources/vim-cucumber
+	url = http://github.com/tpope/vim-cucumber.git
