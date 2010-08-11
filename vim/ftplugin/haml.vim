@@ -1,0 +1,1 @@
+/Users/adindap/Documents/Personal/repositories/config_files/vim-resources/vim-haml/ftplugin/haml.vim
