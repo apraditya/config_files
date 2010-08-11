@@ -1,3 +1,6 @@
 [submodule "vim-resources/snipmate.vim"]
 	path = vim-resources/snipmate.vim
 	url = git://github.com/msanders/snipmate.vim.git
+[submodule "vim-resources/Command-T"]
+	path = vim-resources/Command-T
+	url = http://github.com/wincent/Command-T.git
