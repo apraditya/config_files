@@ -34,7 +34,7 @@ end # of task :install
 
 namespace :vim do
   IGNORE = [ /\.gitignore$/, /Rakefile$/, /LICENSE$/i, /README\.?/i ]
-  basic_plugins = %w( vim-haml nerdtree vim-rails)
+  basic_plugins = %w( vim-haml nerdtree vim-rails vim-cucumber)
   misc_plugins = %w( snipmate )
   repo_dir = ENV['PWD']
   resources_dir = 'vim-resources'
