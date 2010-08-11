@@ -7,3 +7,6 @@
 [submodule "vim-resources/nerdtree"]
 	path = vim-resources/nerdtree
 	url = http://github.com/scrooloose/nerdtree.git
+[submodule "vim-resources/vim-haml"]
+	path = vim-resources/vim-haml
+	url = http://github.com/tpope/vim-haml.git
