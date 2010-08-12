@@ -35,19 +35,28 @@ end # of task :install
 namespace :vim do
   IGNORE = [ /\.gitignore$/, /Rakefile$/, /LICENSE$/i, /README\.?/i ]
   basic_plugins = %w( vim-haml nerdtree vim-rails vim-cucumber)
-  misc_plugins = %w( snipmate )
   repo_dir = ENV['PWD']
   resources_dir = 'vim-resources'
   
   desc "Install vim basic plugins (#{basic_plugins.join(',')})"
-  task :install_plugins do
+  task :install_basic_plugins do
     basic_plugins.each do |plugin|
-      puts "Installing plugin: #{plugin}..."
-      submodule = "#{resources_dir}/#{plugin}"
+      Rake::Task[:install_plugin].invoke(plugin)
+    end
+  end
+
+  desc "Install vim plugin specified in the arguments"
+  task :install_plugin, :plugin_name do |task, arg|
+    # Checks the existance
+    submodule = "#{resources_dir}/#{arg[:plugin_name]}"
+    if File.exist? submodule
+      puts "Installing plugin: #{arg[:plugin_name]}"
       system %Q{ git submodule update "#{submodule}" } if Dir["#{submodule}/*"].size == 0
       plugin_files = `cd "#{submodule}" && git ls-files`.split("\n")
       plugin_files.reject! { |file| IGNORE.any? { |re| file.match(re) } }
       install_vim_plugin(plugin_files, submodule)
+    else
+      puts "#{arg[:plugin_name]} not found or has not been added as a submodule"
     end
   end
 
