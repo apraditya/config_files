@@ -3,7 +3,7 @@ require 'erb'
 
 MiscPlugins = %w( snipmate.vim Command-T )
 ResourcesDir = 'vim-resources'
-IGNORE = [ /\.gitignore$/, /Rakefile$/, /LICENSE$/i, /README\.?/i ]
+IGNORE = [ /\.gitignore$/, /Rakefile$/, /LICENSE$/i, /README\.?/i, /plugin-info\.?/i ]
 
 desc "Install the config files into user's home directory"
 task :install do
@@ -76,6 +76,33 @@ namespace :vim do
     update_vim_plugin(arg[:plugin_name])
   end
 
+  desc "Install snipmate vim plugin"
+  task :snipmate_install do
+    # Checks the existance
+    plugin_name = "snipmate.vim"
+    submodule = "#{ResourcesDir}/#{plugin_name}"
+    if File.exist? submodule
+      puts "Installing plugin: #{plugin_name}"
+      system %Q{ git submodule update "#{submodule}" } if Dir["#{submodule}/*"].size == 0
+      link_vim_plugin_files(submodule, [ /^snippets/i ])
+    else
+      puts "#{plugin_name} not found or has not been added as a submodule"
+    end
+  end
+
+  desc "Remove snipmate vim plugin"
+  task :snipmate_remove do
+    # Checks the existance
+    plugin_name = "snipmate.vim"
+    submodule = "#{ResourcesDir}/#{plugin_name}"
+    if File.exist? submodule
+      puts "Removing plugin: #{plugin_name}"
+      remove_vim_plugin_links(submodule, [ /^snippets/i ])
+    else
+      puts "#{plugin_name} not found or has not been added as a submodule"
+    end
+  end
+
 end
 
 
@@ -102,11 +129,13 @@ def remove_vim_plugin(plugin_name)
       puts "Removing plugin: #{plugin_name}"
       remove_vim_plugin_links(submodule)
     end
+  else
+    puts "#{plugin_name} not found or has not been added as a submodule"
   end
 end
 
-def remove_vim_plugin_links(module_dir)
-  plugin_files = get_plugin_files(module_dir)
+def remove_vim_plugin_links(module_dir, exclude_dir=[])
+  plugin_files = get_plugin_files(module_dir, exclude_dir)
   plugin_files.each do |file|
     target = "vim/#{file}"
     if File.exist? target
@@ -132,12 +161,11 @@ def install_vim_plugin(plugin_name)
   else
     puts "#{plugin_name} not found or has not been added as a submodule"
   end
-
 end
 
-def link_vim_plugin_files(module_dir)
+def link_vim_plugin_files(module_dir, exclude_dir=[])
   replace_all = false
-  plugin_files = get_plugin_files(module_dir)
+  plugin_files = get_plugin_files(module_dir, exclude_dir)
   plugin_files.each do |file|
     target_dir = "vim/#{File.dirname(file)}"
     system %Q{ mkdir -p "#{target_dir}" } unless File.exist? target_dir
@@ -166,12 +194,12 @@ def link_vim_plugin_files(module_dir)
       internal_link(source, target)
     end
   end
-  
 end
 
-def get_plugin_files(repo_dir)
+def get_plugin_files(repo_dir, exclude_dir=[])
   files = `cd "#{repo_dir}" && git ls-files`.split("\n")
   files.reject! { |file| IGNORE.any? { |re| file.match(re) } }
+  files.reject! { |file| exclude_dir.any? { |re| file.match(re) } } unless exclude_dir.empty?
   files
 end
 
