@@ -1,6 +1,10 @@
 require 'rake'
 require 'erb'
 
+MiscPlugins = %w( snipmate.vim Command-T )
+ResourcesDir = 'vim-resources'
+IGNORE = [ /\.gitignore$/, /Rakefile$/, /LICENSE$/i, /README\.?/i ]
+
 desc "Install the config files into user's home directory"
 task :install do
   replace_all = false
@@ -33,72 +37,43 @@ task :install do
 end # of task :install
 
 namespace :vim do
-  IGNORE = [ /\.gitignore$/, /Rakefile$/, /LICENSE$/i, /README\.?/i ]
-  misc_plugins = %w( snipmate.vim Command-T )
-  repo_dir = ENV['PWD']
-  resources_dir = 'vim-resources'
-  
-  desc "Install all vim plugins in #{resources_dir} directory"
+  desc "Install all vim plugins in #{ResourcesDir} directory"
   task :install_all_plugins do
-    Dir["#{resources_dir}/*"].each do |plugin_dir|
-      plugin = plugin_dir.gsub("#{resources_dir}/", '')
-      Rake::Task[:install_plugin].invoke(plugin)
+    Dir["#{ResourcesDir}/*"].each do |plugin_dir|
+      plugin = plugin_dir.gsub("#{ResourcesDir}/", '')
+      install_vim_plugin(plugin)
     end
   end
 
-  desc "Update all vim plugins in #{resources_dir} directory"
+  desc "Update all vim plugins in #{ResourcesDir} directory"
   task :update_all_plugins do
-    Dir["#{resources_dir}/*"].each do |plugin_dir|
-      plugin = plugin_dir.gsub("#{resources_dir}/", '')
-      Rake::Task[:update_plugin].invoke(plugin)
+    Dir["#{ResourcesDir}/*"].each do |plugin_dir|
+      plugin = plugin_dir.gsub("#{ResourcesDir}/", '')
+      update_vim_plugin(plugin)
     end
   end
 
-  desc "Remove all vim plugins in #{resources_dir} directory"
+  desc "Remove all vim plugins in #{ResourcesDir} directory"
   task :remove_all_plugins do
-    Dir["#{resources_dir}/*"].each do |plugin_dir|
-      plugin = plugin_dir.gsub("#{resources_dir}/", '')
-      Rake::Task[:remove_plugin].invoke(plugin)
+    Dir["#{ResourcesDir}/*"].each do |plugin_dir|
+      plugin = plugin_dir.gsub("#{ResourcesDir}/", '')
+      remove_vim_plugin(plugin)
     end
   end
 
   desc "Install vim plugin specified in the arguments"
   task :install_plugin, :plugin_name do |task, arg|
-    # Checks the existance
-    submodule = "#{resources_dir}/#{arg[:plugin_name]}"
-    if File.exist? submodule
-      if misc_plugins.include? arg[:plugin_name]
-        puts "This plugin is currently not supported to be installed with this command"
-      else
-        puts "Installing plugin: #{arg[:plugin_name]}"
-        system %Q{ git submodule update "#{submodule}" } if Dir["#{submodule}/*"].size == 0
-        install_vim_plugin(submodule)
-      end
-    else
-      puts "#{arg[:plugin_name]} not found or has not been added as a submodule"
-    end
+    install_vim_plugin(arg[:plugin_name])
   end
 
   desc "Uninstall specified vim plugin"
   task :remove_plugin, :plugin_name do |task, arg|
-    # Checks the existance
-    submodule = "#{resources_dir}/#{arg[:plugin_name]}"
-    if File.exist? submodule
-      puts "Removing plugin: #{arg[:plugin_name]}"
-      remove_vim_plugin(submodule)
-    end
+    remove_vim_plugin(arg[:plugin_name])
   end
 
   desc "Update vim plugins by pulling from their origin repository"
   task :update_plugin, :plugin_name do |task, arg|
-    # Checks the existance
-    submodule = "#{resources_dir}/#{arg[:plugin_name]}"
-    if File.exist? submodule
-      puts "Pulling from the #{arg[:plugin_name]} plugin repository.."
-      system %Q{ cd "#{submodule}" && git pull }
-    else
-      puts "#{arg[:plugin_name]} not found or has not been added as a submodule"
-    end
+    update_vim_plugin(arg[:plugin_name])
   end
 
 end
@@ -106,7 +81,31 @@ end
 
 # FUNCTIONS
 
-def remove_vim_plugin(module_dir)
+def update_vim_plugin(plugin_name)
+  # Checks the existance
+  submodule = "#{ResourcesDir}/#{plugin_name}"
+  if File.exist? submodule
+    puts "Pulling from the #{plugin_name} plugin repository.."
+    system %Q{ cd "#{submodule}" && git pull }
+  else
+    puts "#{plugin_name} not found or has not been added as a submodule"
+  end
+end
+
+def remove_vim_plugin(plugin_name)
+  # Checks the existance
+  submodule = "#{ResourcesDir}/#{plugin_name}"
+  if File.exist? submodule
+    if MiscPlugins.include? plugin_name
+      puts "Removing #{plugin_name} plugin is currently not supported with this command"
+    else
+      puts "Removing plugin: #{plugin_name}"
+      remove_vim_plugin_links(submodule)
+    end
+  end
+end
+
+def remove_vim_plugin_links(module_dir)
   plugin_files = get_plugin_files(module_dir)
   plugin_files.each do |file|
     target = "vim/#{file}"
@@ -118,7 +117,25 @@ def remove_vim_plugin(module_dir)
     end
   end
 end
-def install_vim_plugin(module_dir)
+
+def install_vim_plugin(plugin_name)
+  # Checks the existance
+  submodule = "#{ResourcesDir}/#{plugin_name}"
+  if File.exist? submodule
+    if MiscPlugins.include? plugin_name
+      puts "Installing #{plugin_name} plugin is currently not supported with this command"
+    else
+      puts "Installing plugin: #{plugin_name}"
+      system %Q{ git submodule update "#{submodule}" } if Dir["#{submodule}/*"].size == 0
+      link_vim_plugin_files(submodule)
+    end
+  else
+    puts "#{plugin_name} not found or has not been added as a submodule"
+  end
+
+end
+
+def link_vim_plugin_files(module_dir)
   replace_all = false
   plugin_files = get_plugin_files(module_dir)
   plugin_files.each do |file|
@@ -149,6 +166,7 @@ def install_vim_plugin(module_dir)
       internal_link(source, target)
     end
   end
+  
 end
 
 def get_plugin_files(repo_dir)
