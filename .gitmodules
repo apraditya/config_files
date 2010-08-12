@@ -22,3 +22,6 @@
 [submodule "vim-resources/vim-surround"]
 	path = vim-resources/vim-surround
 	url = http://github.com/tpope/vim-surround.git
+[submodule "vim-resources/vim-ragtag"]
+	path = vim-resources/vim-ragtag
+	url = http://github.com/tpope/vim-ragtag.git
