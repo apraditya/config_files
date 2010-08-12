@@ -158,7 +158,7 @@ def get_plugin_files(repo_dir)
 end
 
 def replace(source, target)
-  system %Q{ rm "#{target}" }
+  system %Q{ rm -f "#{target}" }
   internal_link(source, target)
 end
 
