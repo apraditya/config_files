@@ -25,3 +25,6 @@
 [submodule "vim-resources/vim-ragtag"]
 	path = vim-resources/vim-ragtag
 	url = http://github.com/tpope/vim-ragtag.git
+[submodule "vim-resources/vip"]
+	path = vim-resources/vip
+	url = http://github.com/tobyS/vip.git
