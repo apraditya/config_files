@@ -23,13 +23,14 @@ alias rcon="bundle exec pry -r ./config/environment"
 alias rser="rails s"
 alias rgen="rails g"
 alias rdes="rails destroy"
+alias bex="bundle exec"
 
 # Aliases from Dinesh
 alias ls="ls -alFo"
 alias df="df -h"
 alias psw="ps waxu | grep "
 alias s="source"
-alias du="du -h -d 1"
+alias du="du -h -d1"
 alias mv="mv -i"
 alias pu=pushd
 alias po=popd
