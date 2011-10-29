@@ -1,2 +1,2 @@
 # Pry config to work with RubyMine
-Pry.config.editor = proc { |file, line| "mine --line #{line} #{file}" }%
+Pry.config.editor = proc { |file, line| "mine --line #{line} #{file}" }
