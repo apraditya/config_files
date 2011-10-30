@@ -1,3 +1,6 @@
+# RVM Installation
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -101,9 +104,6 @@ biggest() {
 nowdir() {
   mkdir $(date "+%y%m%d")-$1
 }
-
-# RVM Installation
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
 export PATH=/usr/local/Cellar/php/5.3.8/bin:$HOME/bin:$PATH
 export JAVA_HOME=`/usr/libexec/java_home`
