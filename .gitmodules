@@ -25,3 +25,6 @@
 [submodule "vim-resources/vip"]
 	path = vim-resources/vip
 	url = http://github.com/tobyS/vip.git
+[submodule "vim-resources/vim-pathogen"]
+	path = vim-resources/vim-pathogen
+	url = git://github.com/tpope/vim-pathogen.git
