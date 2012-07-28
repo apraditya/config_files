@@ -76,33 +76,6 @@ namespace :vim do
     update_vim_plugin(arg[:plugin_name])
   end
 
-  desc "Install snipmate vim plugin"
-  task :snipmate_install do
-    # Checks the existance
-    plugin_name = "snipmate.vim"
-    submodule = "#{ResourcesDir}/#{plugin_name}"
-    if File.exist? submodule
-      puts "Installing plugin: #{plugin_name}"
-      system %Q{ git submodule update --init "#{submodule}" } if Dir["#{submodule}/*"].size == 0
-      link_vim_plugin_files(submodule, [ /^snippets/i ])
-    else
-      puts "#{plugin_name} not found or has not been added as a submodule"
-    end
-  end
-
-  desc "Remove snipmate vim plugin"
-  task :snipmate_remove do
-    # Checks the existance
-    plugin_name = "snipmate.vim"
-    submodule = "#{ResourcesDir}/#{plugin_name}"
-    if File.exist? submodule
-      puts "Removing plugin: #{plugin_name}"
-      remove_vim_plugin_links(submodule, [ /^snippets/i ])
-    else
-      puts "#{plugin_name} not found or has not been added as a submodule"
-    end
-  end
-
 end
 
 
