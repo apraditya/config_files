@@ -34,6 +34,7 @@ opening files and buffers with a minimal number of keystrokes.
 - [**vim-rails**](https://github.com/tpope/vim-rails/). Ruby on Rails power tools
 - [**vim-surround**](https://github.com/tpope/vim-surround/). It is all about "surroundings": parentheses, brackets, quotes, XML tags, and more. The plugin provides mappings to easily delete, change and add such surroundings in pairs.
 - [**vip**](https://github.com/tobyS/vip/). It's a vim integration for PHP (formerly known as PDV)
+- [**vim-pathogen**](https://github.com/tpope/vim-pathogen). It makes installing plugins and runtime files in their own private directories super easy!
 
 #### Plugin Setup
 
@@ -48,4 +49,4 @@ To install a specific plugin, run `rake vim:install_plugin[plugin_name]`. For ex
 Similarly for update the plugin, run `rake vim:update_all_plugins` to update all plugins from their respective repositories. And to update a specific plugin, run `rake vim:update_plugin[plugin_name]`.
 
 #### NOTE
-Soon, I'll add [**snipmate.vim**](https://github.com/garbas/vim-snipmate/) as a git submodule. It's a vim script that implements some of TextMate's snippets features in Vim.
+Soon I'll add [**snipmate.vim**](https://github.com/garbas/vim-snipmate/) as a git submodule. It's a vim script that implements some of TextMate's snippets features in Vim.
