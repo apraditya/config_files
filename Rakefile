@@ -83,7 +83,7 @@ namespace :vim do
     submodule = "#{ResourcesDir}/#{plugin_name}"
     if File.exist? submodule
       puts "Installing plugin: #{plugin_name}"
-      system %Q{ git submodule update "#{submodule}" } if Dir["#{submodule}/*"].size == 0
+      system %Q{ git submodule update --init "#{submodule}" } if Dir["#{submodule}/*"].size == 0
       link_vim_plugin_files(submodule, [ /^snippets/i ])
     else
       puts "#{plugin_name} not found or has not been added as a submodule"
@@ -113,7 +113,7 @@ def update_vim_plugin(plugin_name)
   submodule = "#{ResourcesDir}/#{plugin_name}"
   if File.exist? submodule
     puts "Pulling from the #{plugin_name} plugin repository.."
-    system %Q{ cd "#{submodule}" && git pull }
+    system %Q{ cd "#{submodule}"; git checkout master; git pull }
   else
     puts "#{plugin_name} not found or has not been added as a submodule"
   end
@@ -155,7 +155,7 @@ def install_vim_plugin(plugin_name)
       puts "Installing #{plugin_name} plugin is currently not supported with this command"
     else
       puts "Installing plugin: #{plugin_name}"
-      system %Q{ git submodule update "#{submodule}" } if Dir["#{submodule}/*"].size == 0
+      system %Q{ git submodule update --init "#{submodule}" } if Dir["#{submodule}/*"].size == 0
       link_vim_plugin_files(submodule)
     end
   else
