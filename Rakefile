@@ -76,6 +76,24 @@ namespace :vim do
     update_vim_plugin(arg[:plugin_name])
   end
 
+  desc "Install and setup vim-pathogen"
+  task :install_pathogen do
+    install_vim_plugin('vim-pathogen')
+    
+  end
+
+  desc "Setup vim-pathogen"
+  task :setup_pathogen do
+    bundle_dir = 'vim/bundle'
+    system %Q{ mkdir -p "#{bundle_dir}" } unless Dir.exist? bundle_dir
+    
+    append_text = "\\\" Added this to setup vim-pathogen\n\\\" https://github.com/tpope/vim-pathogen\ncall pathogen#infect()"
+    system %Q{ echo "#{append_text}" >> vimrc }
+    
+    puts "vim-pathogen is now ready!"
+    puts "Now any plugins you wish to install can be extracted to a subdirectory under ~/.vim/bundle"
+    puts "Visit https://github.com/tpope/vim-pathogen for more info."
+  end
 end
 
 
@@ -130,6 +148,7 @@ def install_vim_plugin(plugin_name)
       puts "Installing plugin: #{plugin_name}"
       system %Q{ git submodule update --init "#{submodule}" } if Dir["#{submodule}/*"].size == 0
       link_vim_plugin_files(submodule)
+      puts "\nNOTE: Please run rake vim:setup_pathogen to setup this plugin.\n\n" if plugin_name == 'vim-pathogen'
     end
   else
     puts "#{plugin_name} not found or has not been added as a submodule"
