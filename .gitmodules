@@ -28,3 +28,6 @@
 [submodule "vim-resources/vim-pathogen"]
 	path = vim-resources/vim-pathogen
 	url = git://github.com/tpope/vim-pathogen.git
+[submodule "vim-resources/vim-conque"]
+	path = vim-resources/vim-conque
+	url = git://github.com/rson/vim-conque.git
