@@ -190,3 +190,23 @@ nmap <C-K> <C-W><C-K>
 " from tpope: http://github.com/tpope/vim-haml/issues#issue/7/comment/254442
 autocmd BufNewFile,BufRead *.scss set filetype=css
 
+" Ruby Conque & Fast-spec Aware RSpec Finder
+" from: https://github.com/skwp/vim-ruby-conque
+nmap <silent> <Leader>rcrr :call RunRubyCurrentFileConque()<CR>
+nmap <silent> <Leader>rcss :call RunRspecCurrentFileConque()<CR>
+nmap <silent> <Leader>rcll :call RunRspecCurrentLineConque()<CR>
+nmap <silent> <Leader>rccc :call RunCucumberCurrentFileConque()<CR>
+nmap <silent> <Leader>rccl :call RunCucumberCurrentLineConque()<CR>
+nmap <silent> <Leader>rcRR :call RunRakeConque()<CR>
+nmap <silent> <Leader>rcrl :call RunLastConqueCommand()<CR>
+
+nnoremap <silent> <C-s> :call RelatedSpecVOpen()<CR>
+nnoremap <silent> ,<C-s> :call RelatedSpecOpen()<CR>
+
+" Cmd-Shift-R for RSpec
+nmap <silent> <D-R> :call RunRspecCurrentFileConque()<CR>
+" Cmd-Shift-L for RSpec Current Line
+nmap <silent> <D-L> :call RunRspecCurrentLineConque()<CR>
+" ,Cmd-R for Last conque command
+nmap <silent> ,<D-R> :call RunLastConqueCommand()<CR>
+
