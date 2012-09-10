@@ -28,7 +28,7 @@ ZSH_THEME="candy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git rails3 ruby rvm dirpersist autojump heroku zsh-syntax-highlighting )
+plugins=(git rails3 ruby rvm dirpersist autojump heroku zsh-syntax-highlighting bundler)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,7 +105,12 @@ nowdir() {
   mkdir $(date "+%y%m%d")-$1
 }
 
-export PATH=/usr/local/Cellar/php/5.3.8/bin:$HOME/bin:$PATH
+# Find files containting particular word
+findin() {
+  find $2 -type f | xargs grep -i $1
+}
+
+export PATH=/usr/local/bin:$HOME/bin:$PATH
 export JAVA_HOME=`/usr/libexec/java_home`
 
 #autojump
@@ -151,3 +156,5 @@ preexec_functions+=autojump_preexec
 alias jumpstat="autojump --stat"
 
 function j { local new_path="$(autojump $@)";if [ -n "$new_path" ]; then echo -e "\\033[31m${new_path}\\033[0m"; cd "$new_path";else false; fi }
+
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
