@@ -31,3 +31,6 @@
 [submodule "vim-resources/vim-conque"]
 	path = vim-resources/vim-conque
 	url = git://github.com/rson/vim-conque.git
+[submodule "tools/z"]
+	path = tools/z
+	url = git://github.com/rupa/z.git
