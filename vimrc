@@ -210,3 +210,13 @@ nmap <silent> <D-L> :call RunRspecCurrentLineConque()<CR>
 " ,Cmd-R for Last conque command
 nmap <silent> ,<D-R> :call RunLastConqueCommand()<CR>
 
+" Added this to setup vim-pathogen
+" https://github.com/tpope/vim-pathogen
+call pathogen#infect()
+
+" add this to your vimrc to get Vim to search all gems in your current RVM
+" gemset (requires pathogen.vim)
+" More info: https://github.com/tpope/gem-ctags
+autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
+      \ pathogen#split(&tags) +
+      \ map(split($GEM_PATH,':'),'v:val."/gems/*/tags"')))
