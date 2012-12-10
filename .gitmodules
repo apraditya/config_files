@@ -34,3 +34,6 @@
 [submodule "tools/z"]
 	path = tools/z
 	url = git://github.com/rupa/z.git
+[submodule "vim/bundle/vim-powerline"]
+	path = vim/bundle/vim-powerline
+	url = git@github.com:Lokaltog/vim-powerline.git

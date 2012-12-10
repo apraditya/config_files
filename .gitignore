@@ -1,6 +1,5 @@
 *.swp
 .swo
-vim/bundle/*
 vim/.netrwhist
 vim/autoload/*
 vim/compiler/*
