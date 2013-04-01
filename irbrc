@@ -18,12 +18,6 @@ rescue LoadError => e
   warn "Couldn't load awesome_print: #{e}"
 end
 
-# print SQL to STDOUT
-if ENV.include?('RAILS_ENV') && !Object.const_defined?('RAILS_DEFAULT_LOGGER')
-  require 'logger'
-  RAILS_DEFAULT_LOGGER = Logger.new(STDOUT)
-end
-
 
 # Prompt behavior
 ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
@@ -33,6 +27,17 @@ require 'irb/ext/save-history'
 IRB.conf[:EVAL_HISTORY] = 1000
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
+
+# load .irbrc_rails in rails environments
+railsrc_path = File.expand_path('~/.irbrc_rails')
+if ( ENV['RAILS_ENV'] || defined? Rails ) && File.exist?( railsrc_path )
+  begin
+    load railsrc_path
+  rescue Exception
+    warn "Could not load: #{ railsrc_path } because of #{$!.message}"
+  end
+end
+
 
 # Easily print methods local to an object's class
 class Object
