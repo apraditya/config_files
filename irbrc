@@ -1,5 +1,14 @@
 require 'rubygems'
 
+# Use Pry everywhere if possible
+begin
+  require 'pry'
+  Pry.start
+  exit
+rescue LoadError => e
+  warn "Couldn't load Pry: #{e}"
+end
+
 # Autocomplete
 require 'irb/completion'
 
