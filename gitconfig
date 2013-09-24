@@ -1,4 +1,14 @@
 # ADD LOCAL CONFIGURATION HERE
+[alias]
+  mylog = log --author=apraditya
+  co    = checkout
+  chp   = cherry-pick
+  sta   = stash apply
+  std   = stash drop
+  stl   = stash list
+  stp   = stash pop
+  sts   = stash show
+
 
 
 # DO NOT EDIT BELOW THIS LINE
