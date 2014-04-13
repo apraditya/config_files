@@ -1,10 +1,55 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" My Bundles
+Bundle 'tpope/vim-sensible'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
+Bundle 'rking/ag.vim'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'slim-template/vim-slim'
+Bundle 'wincent/Command-T'
+
+filetype plugin indent on
+
+color jellybeans
+
+set modelines=0
+set clipboard=unnamed
+set synmaxcol=128
+set ttyscroll=10
+set encoding=utf-8
+set ignorecase
+set smartcase
+
+" Automatic formatting
+autocmd BufWritePre *.rb :%s/\s\+$//e
+autocmd BufWritePre *.go :%s/\s\+$//e
+autocmd BufWritePre *.haml :%s/\s\+$//e
+autocmd BufWritePre *.html :%s/\s\+$//e
+autocmd BufWritePre *.scss :%s/\s\+$//e
+autocmd BufWritePre *.slim :%s/\s\+$//e
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+set noswapfile
 set nobackup
 set nowritebackup
 set history=200		" keep 200 lines of command line history
@@ -164,7 +209,7 @@ if executable("ack")
 endif
 
 " Color scheme
-colorscheme vividchalk
+" colorscheme vividchalk
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 

@@ -1,14 +1,4 @@
 *.swp
 .swo
-vim/.vim/*
-vim/.netrwhist
-vim/autoload/*
-vim/compiler/*
-vim/doc/*
-vim/ftdetect/*
-vim/ftplugin/*
-vim/indent/*
-vim/nerdtree_plugin/*
-vim/plugin/*
-vim/syntax/*
-vim/tests/*
+.DS_Store
+vim/bundle/*
