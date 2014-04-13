@@ -1,3 +1,7 @@
+[user]
+	name  = Adinda Praditya
+	email = apraditya@gmail.com
+
 # ADD LOCAL CONFIGURATION HERE
 [alias]
   mylog = log --author=apraditya
