@@ -1,0 +1,30 @@
+#!/bin/sh
+
+brew install psgrep
+brew install nodejs
+brew install zsh-completions
+
+# Homebrew Cask
+# a CLI workflow for the administration of Mac applications distributed as binaries
+brew tap phinze/homebrew-cask
+brew install brew-cask
+
+brew cask install airmail
+brew cask install cloud
+brew cask install cloudup
+brew cask install dropbox
+brew cask install evernote
+brew cask install firefox
+brew cask install gitbox
+brew cask install google-drive
+brew cask install google-chrome
+brew cask install google-hangouts
+brew cask install mou
+brew cask install navicat-for-postgresql
+brew cask install ngrok
+brew cask install nvalt
+brew cask install onyx
+brew cask install sequel-pro
+brew cask install skype
+brew cask install slack
+brew cask install vlc
