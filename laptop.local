@@ -3,6 +3,7 @@
 brew install psgrep
 brew install nodejs
 brew install zsh-completions
+brew install git-flow
 
 # Homebrew Cask
 # a CLI workflow for the administration of Mac applications distributed as binaries
