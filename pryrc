@@ -1,24 +1,9 @@
 # Pry config to work with RubyMine
 # Pry.config.editor = proc { |file, line| "mine --line #{line} #{file}" }
-Pry.config.editor = 'subl'
+Pry.config.editor = 'atom'
+Pry.config.correct_indent = false
+Pry.config.auto_indent = false
 
-begin
-  require 'awesome_print' 
-  AwesomePrint.pry!
-rescue LoadError => err
-  puts "no awesome_print :("
-end
-
-
-# load .irbrc_rails in rails environments
-railsrc_path = File.expand_path('~/.pryrc_rails')
-if ( ENV['RAILS_ENV'] || defined? Rails ) && File.exist?( railsrc_path )
-  begin
-    load railsrc_path
-  rescue Exception
-    warn "Could not load: #{ railsrc_path } because of #{$!.message}"
-  end
-end
 
 # Easily print methods local to an object's class
 class Object
