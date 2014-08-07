@@ -6,7 +6,7 @@ brew install zsh-completions
 
 # Homebrew Cask
 # a CLI workflow for the administration of Mac applications distributed as binaries
-brew tap phinze/homebrew-cask
+brew tap caskroom/cask
 brew install brew-cask
 
 brew cask install airmail
