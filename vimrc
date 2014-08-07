@@ -12,9 +12,11 @@ Bundle 'gmarik/vundle'
 " My Bundles
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
+Bundle 'mattn/emmet-vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
@@ -254,6 +256,10 @@ nmap <silent> <D-R> :call RunRspecCurrentFileConque()<CR>
 nmap <silent> <D-L> :call RunRspecCurrentLineConque()<CR>
 " ,Cmd-R for Last conque command
 nmap <silent> ,<D-R> :call RunLastConqueCommand()<CR>
+
+" Emmet setting
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,erb EmmetInstall
 
 " Added this to setup vim-pathogen
 " https://github.com/tpope/vim-pathogen
