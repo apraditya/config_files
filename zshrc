@@ -127,6 +127,9 @@ nowdir() {
 # RVM Installation
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
+# NVM Installation
+export NVM_DIR="/Users/apraditya/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 #autojump
 #Copyright Joel Schaerer 2008, 2009

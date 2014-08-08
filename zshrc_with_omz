@@ -113,3 +113,7 @@ export JAVA_HOME=`/usr/libexec/java_home`
 # === zsh-completions https://github.com/zsh-users/zsh-completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+
+# NVM Installation
+export NVM_DIR="/Users/apraditya/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
