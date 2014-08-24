@@ -50,3 +50,21 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cgrep='grep --color=always'
 
+# Heroku build
+alias hbuild-console='heroku run console --remote build'
+alias hbuild-process='watch heroku ps --remote build'
+alias hbuild-releases='heroku releases --remote build'
+alias hbuild-tail='heroku logs --tail --remote build'
+
+# Heroku staging
+alias hstaging-console='heroku run console --remote staging'
+alias hstaging-process='watch heroku ps --remote staging'
+alias hstaging-releases='heroku releases --remote staging'
+alias hstaging-tail='heroku logs --tail --remote staging'
+
+# Heroku production
+alias hproduction-console='heroku run console --remote production'
+alias hproduction-process='watch heroku ps --remote production'
+alias hproduction-releases='heroku releases --remote production'
+alias hproduction-tail='heroku logs --tail --remote production'
+
