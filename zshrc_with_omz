@@ -107,7 +107,7 @@ findin() {
   find $2 -type f | xargs grep -i $1
 }
 
-export PATH=/usr/local/bin:$HOME/bin:$PATH
+export PATH=/usr/local/sbin:/usr/local/bin:$HOME/bin:$PATH
 export JAVA_HOME=`/usr/libexec/java_home`
 
 # === zsh-completions https://github.com/zsh-users/zsh-completions
