@@ -35,10 +35,13 @@ color jellybeans
 set modelines=0
 set clipboard=unnamed
 set synmaxcol=128
-set ttyscroll=10
 set encoding=utf-8
 set ignorecase
 set smartcase
+
+if !has('nvim')
+  set ttyscroll=10
+endif
 
 " Automatic formatting
 autocmd BufWritePre *.rb :%s/\s\+$//e
