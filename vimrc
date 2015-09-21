@@ -18,11 +18,13 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-dispatch'
 Plugin 'mattn/emmet-vim'
 Plugin 'dsawardekar/ember.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'bling/vim-airline'
+Plugin 'thoughtbot/vim-rspec'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
@@ -133,9 +135,9 @@ set laststatus=2
 " \ is the leader character
 let mapleader = "\\"
 
-" Mappings for convenience 
+" Mappings for convenience
 map <F2> :NERDTreeToggle<CR>
-" Jumping to split views 
+" Jumping to split views
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
@@ -164,6 +166,15 @@ map <Leader>sv :ESview
 map <Leader>su :ESunittest
 map <Leader>sf :ESfunctionaltest
 map <Leader>si :ESintegrationtest
+
+" vim-rspec mappings
+map <Leader>st :call RunCurrentSpecFile()<CR>
+map <Leader>ss :call RunNearestSpec()<CR>
+map <Leader>sl :call RunLastSpec()<CR>
+map <Leader>sa :call RunAllSpecs()<CR>
+
+let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
+let g:rspec_runner = "os_x_iterm2"
 
 " Hide search highlighting
 map <Leader>l :set invhls <CR>
