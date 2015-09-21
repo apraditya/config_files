@@ -145,25 +145,25 @@ map ,p "+gp
 " Edit the README_FOR_APP (makes :R commands work)
 map <Leader>R :e doc/README_FOR_APP<CR>
 
-" Leader shortcuts for Rails commands
-map <Leader>m :Rmodel 
-map <Leader>c :Rcontroller 
-map <Leader>v :Rview 
-map <Leader>u :Runittest 
-map <Leader>f :Rfunctionaltest 
-map <Leader>i :Rintegrationtest 
-map <Leader>h :Rhelper 
-map <Leader>tm :RTmodel 
-map <Leader>tc :RTcontroller 
-map <Leader>tv :RTview 
-map <Leader>tu :RTunittest 
-map <Leader>tf :RTfunctionaltest 
-map <Leader>sm :RSmodel 
-map <Leader>sc :RScontroller 
-map <Leader>sv :RSview 
-map <Leader>su :RSunittest 
-map <Leader>sf :RSfunctionaltest 
-map <Leader>si :RSintegrationtest 
+" Leader shortcuts for Rails commands (vim-rails)
+map <Leader>m :Emodel
+map <Leader>c :Econtroller
+map <Leader>v :Eview
+map <Leader>u :Eunittest
+map <Leader>f :Efunctionaltest
+map <Leader>i :Eintegrationtest
+map <Leader>h :Ehelper
+map <Leader>tm :ETmodel
+map <Leader>tc :ETcontroller
+map <Leader>tv :ETview
+map <Leader>tu :ETunittest
+map <Leader>tf :ETfunctionaltest
+map <Leader>sm :ESmodel
+map <Leader>sc :EScontroller
+map <Leader>sv :ESview
+map <Leader>su :ESunittest
+map <Leader>sf :ESfunctionaltest
+map <Leader>si :ESintegrationtest
 
 " Hide search highlighting
 map <Leader>l :set invhls <CR>
@@ -201,9 +201,7 @@ imap <C-F> <C-R>=expand("%")<CR>
 vmap P p :call setreg('"', getreg('0')) <CR>
 
 " Display extra whitespace
-" (had to comment this out as it cause errors).
-" TODO: Will have to check this matter
-"set list listchars=tab:»·,trail:·
+set list listchars=tab:»·,trail:·,nbsp:·
 
 " Edit routes
 command! Rroutes :e config/routes.rb
@@ -246,37 +244,7 @@ nmap <C-K> <C-W><C-K>
 " from tpope: http://github.com/tpope/vim-haml/issues#issue/7/comment/254442
 autocmd BufNewFile,BufRead *.scss set filetype=css
 
-" Ruby Conque & Fast-spec Aware RSpec Finder
-" from: https://github.com/skwp/vim-ruby-conque
-nmap <silent> <Leader>rcrr :call RunRubyCurrentFileConque()<CR>
-nmap <silent> <Leader>rcss :call RunRspecCurrentFileConque()<CR>
-nmap <silent> <Leader>rcll :call RunRspecCurrentLineConque()<CR>
-nmap <silent> <Leader>rccc :call RunCucumberCurrentFileConque()<CR>
-nmap <silent> <Leader>rccl :call RunCucumberCurrentLineConque()<CR>
-nmap <silent> <Leader>rcRR :call RunRakeConque()<CR>
-nmap <silent> <Leader>rcrl :call RunLastConqueCommand()<CR>
-
-nnoremap <silent> <C-s> :call RelatedSpecVOpen()<CR>
-nnoremap <silent> ,<C-s> :call RelatedSpecOpen()<CR>
-
-" Cmd-Shift-R for RSpec
-nmap <silent> <D-R> :call RunRspecCurrentFileConque()<CR>
-" Cmd-Shift-L for RSpec Current Line
-nmap <silent> <D-L> :call RunRspecCurrentLineConque()<CR>
-" ,Cmd-R for Last conque command
-nmap <silent> ,<D-R> :call RunLastConqueCommand()<CR>
-
 " Emmet setting
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,erb EmmetInstall
 
-" Added this to setup vim-pathogen
-" https://github.com/tpope/vim-pathogen
-" call pathogen#infect()
-
-" add this to your vimrc to get Vim to search all gems in your current RVM
-" gemset (requires pathogen.vim)
-" More info: https://github.com/tpope/gem-ctags
-" autocmd FileType ruby let &l:tags = pathogen#legacyjoin(pathogen#uniq(
-"       \\ pathogen#split(&tags) +
-"       \\ map(split($GEM_PATH,':'),'v:val."/gems/*/tags"')))
