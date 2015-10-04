@@ -34,6 +34,7 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'slim-template/vim-slim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
@@ -192,8 +193,9 @@ map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
-" Maps autocomplete to tab
-imap <Tab> <C-P>
+" Prevents YouCompleteMe using Tab to use side-by-side with ultisnips
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
 
 " Duplicate a selection
 " Visual mode: D
@@ -237,9 +239,6 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 " Numbers
 set number
 set numberwidth=5
-
-" Snippets are activated by Shift+Tab
-let g:snippetsEmu_key = "<S-Tab>"
 
 " Tab completion options
 set wildmode=list:longest,list:full
