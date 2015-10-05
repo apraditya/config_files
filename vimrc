@@ -48,6 +48,9 @@ set synmaxcol=128
 set encoding=utf-8
 set ignorecase
 set smartcase
+" Fix scrolling on iTerm2. Additionally, run this command:
+" defaults write com.googlecode.iterm2 AlternateMouseScroll -bool true
+set mouse=nicr
 
 if !has('nvim')
   set ttyscroll=10
