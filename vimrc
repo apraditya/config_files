@@ -50,6 +50,9 @@ set synmaxcol=128
 set encoding=utf-8
 set ignorecase
 set smartcase
+set nolazyredraw " don't redraw while executing macros
+
+set magic " Set magic on, for regex
 
 syntax enable
 set background=dark
@@ -59,6 +62,9 @@ call togglebg#map("<F5>")
 " Fix scrolling on iTerm2. Additionally, run this command:
 " defaults write com.googlecode.iterm2 AlternateMouseScroll -bool true
 set mouse=nicr
+
+set autoread  " detect when a file is changed
+set ttyfast   " faster redrawing
 
 if !has('nvim')
   set ttyscroll=10
@@ -129,13 +135,10 @@ else
 
 endif " has("autocmd")
 
-" if has("folding")
-  " set foldenable
-  " set foldmethod=syntax
-  " set foldlevel=1
-  " set foldnestmax=2
-  " set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
-" endif
+" code folding settings
+set foldnestmax=10 " deepest fold is 10 levels
+set foldlevel=1
+set nofoldenable " don't fold by default
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -249,6 +252,7 @@ highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 " Numbers
 set number
+set relativenumber
 set numberwidth=5
 
 " Tab completion options
