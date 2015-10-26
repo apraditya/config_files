@@ -22,7 +22,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'mattn/emmet-vim'
 Plugin 'dsawardekar/ember.vim'
 Plugin 'mhinz/vim-signify'
-Plugin 'nanotech/jellybeans.vim'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'scrooloose/syntastic'
@@ -37,10 +37,12 @@ Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'rizzatti/dash.vim'
 
 filetype plugin indent on
 
-color jellybeans
+" User Interface
+""""""""""""""""""""
 
 set modelines=0
 set clipboard=unnamed
@@ -48,6 +50,12 @@ set synmaxcol=128
 set encoding=utf-8
 set ignorecase
 set smartcase
+
+syntax enable
+set background=dark
+colorscheme solarized
+call togglebg#map("<F5>")
+
 " Fix scrolling on iTerm2. Additionally, run this command:
 " defaults write com.googlecode.iterm2 AlternateMouseScroll -bool true
 set mouse=nicr
