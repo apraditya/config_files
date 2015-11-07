@@ -38,6 +38,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'rizzatti/dash.vim'
+Plugin 'benmills/vimux'
 
 filetype plugin indent on
 
