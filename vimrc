@@ -39,6 +39,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'rizzatti/dash.vim'
 Plugin 'benmills/vimux'
+Plugin 'mustache/vim-mustache-handlebars'
 
 filetype plugin indent on
 
@@ -273,5 +274,5 @@ autocmd BufNewFile,BufRead *.scss set filetype=css
 
 " Emmet setting
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,erb EmmetInstall
+autocmd FileType html,hbs,handlebars,css,scss,erb EmmetInstall
 
