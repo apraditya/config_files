@@ -20,6 +20,8 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-rbenv'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'mattn/emmet-vim'
 Plugin 'dsawardekar/ember.vim'
 Plugin 'mhinz/vim-signify'
@@ -41,6 +43,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'rizzatti/dash.vim'
 Plugin 'benmills/vimux'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'ngmy/vim-rubocop'
 
 filetype plugin indent on
 
