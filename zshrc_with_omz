@@ -25,7 +25,7 @@ ZSH_THEME="candy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow github rails ruby rbenv dirpersist z zeus zsh-syntax-highlighting npm heroku bundler tmux tmuxinator)
+plugins=(git git-flow github git-extra rails ruby dirpersist z zeus zsh-syntax-highlighting npm heroku aws bgnotify safe-paste bundler tmux tmuxinator emoji ember-cli)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -108,6 +108,7 @@ findin() {
 }
 
 export PATH=/usr/local/sbin:/usr/local/bin:$HOME/bin:$PATH
+export GOPATH=/usr/local/opt/go/libexec/bin
 export JAVA_HOME=`/usr/libexec/java_home`
 
 # === zsh-completions https://github.com/zsh-users/zsh-completions
@@ -118,4 +119,4 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # NVM Installation
 export NVM_DIR="/Users/apraditya/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+source $(brew --prefix nvm)/nvm.sh
