@@ -197,7 +197,7 @@ map <Leader>ss :call RunNearestSpec()<CR>
 map <Leader>sl :call RunLastSpec()<CR>
 map <Leader>sa :call RunAllSpecs()<CR>
 
-let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
+let g:rspec_command = "Dispatch bin/rspec {spec}"
 let g:rspec_runner = "os_x_iterm2"
 
 " Hide search highlighting
