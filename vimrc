@@ -24,6 +24,8 @@ Plugin 'tpope/vim-projectile'
 Plugin 'tpope/vim-rbenv'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'mattn/emmet-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 Plugin 'dsawardekar/ember.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'altercation/vim-colors-solarized'
@@ -46,6 +48,8 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'benmills/vimux'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'ngmy/vim-rubocop'
+Plugin 'mbbill/undotree'
+Plugin 'szw/vim-tags'
 
 filetype plugin indent on
 
