@@ -48,7 +48,13 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle "Yggdroot/indentLine"
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-sensible'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
       \     'windows' : 'tools\\update-dll-mingw',
@@ -83,6 +89,7 @@ NeoBundle 'avelino/vim-bootstrap-updater'
 "" Custom bundles
 "" Javascript Bundle
 NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'poetic/vim-textobj-javascript'
 
 "" Ruby Bundle
 NeoBundle "tpope/vim-rails"
@@ -90,6 +97,8 @@ NeoBundle "tpope/vim-rake"
 NeoBundle "tpope/vim-projectionist"
 NeoBundle "thoughtbot/vim-rspec"
 NeoBundle "ecomba/vim-ruby-refactoring"
+NeoBundle "tpope/vim-bundler"
+NeoBundle 'nelstrom/vim-textobj-rubyblock'
 
 "" HTML Bundle
 NeoBundle 'amirh/HTML-AutoCloseTag'
@@ -511,6 +520,8 @@ map <Leader>st :call RunCurrentSpecFile()<CR>
 map <Leader>ss :call RunNearestSpec()<CR>
 map <Leader>sl :call RunLastSpec()<CR>
 map <Leader>sa :call RunAllSpecs()<CR>
+
+let g:rspec_command = "Dispatch bin/rspec {spec}"
 
 " Ruby refactory
 nnoremap <leader>rap  :RAddParameter<cr>
