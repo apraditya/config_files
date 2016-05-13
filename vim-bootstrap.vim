@@ -149,7 +149,9 @@ set ttyfast
 "" Directories for swp files
 set nobackup
 set noswapfile
+set nowritebackup
 
+set history=200
 set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/sh
@@ -166,6 +168,8 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
+set relativenumber
+set numberwidth=5
 
 let no_buffers_menu=1
 if !exists('g:not_finsh_neobundle')
@@ -173,6 +177,7 @@ if !exists('g:not_finsh_neobundle')
 endif
 
 set mousemodel=popup
+set mouse=nicr
 set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
@@ -310,6 +315,9 @@ augroup vimrc-make-cmake
   autocmd FileType make setlocal noexpandtab
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
+
+"" scss
+autocmd BufNewFile,BufRead *.scss set filetype=css
 
 set autoread
 
@@ -474,11 +482,35 @@ let g:tagbar_type_ruby = {
     \ ]
 \ }
 
+" Leader shortcuts for Rails commands (vim-rails)
+map <Leader>m :Emodel
+map <Leader>c :Econtroller
+map <Leader>v :Eview
+map <Leader>u :Eunittest
+map <Leader>f :Efunctionaltest
+map <Leader>i :Eintegrationtest
+map <Leader>h :Ehelper
+map <Leader>tm :ETmodel
+map <Leader>tc :ETcontroller
+map <Leader>tv :ETview
+map <Leader>tu :ETunittest
+map <Leader>tf :ETfunctionaltest
+map <Leader>sm :ESmodel
+map <Leader>sc :EScontroller
+map <Leader>sv :ESview
+map <Leader>su :ESunittest
+map <Leader>sf :ESfunctionaltest
+map <Leader>si :ESintegrationtest
+
+" Edit routes
+command! Rroutes :e config/routes.rb
+command! RTroutes :tabe config/routes.rb
+
 " RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>st :call RunCurrentSpecFile()<CR>
+map <Leader>ss :call RunNearestSpec()<CR>
+map <Leader>sl :call RunLastSpec()<CR>
+map <Leader>sa :call RunAllSpecs()<CR>
 
 " Ruby refactory
 nnoremap <leader>rap  :RAddParameter<cr>
