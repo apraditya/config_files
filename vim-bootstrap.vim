@@ -81,7 +81,7 @@ endif
 NeoBundle 'honza/vim-snippets'
 
 "" Color
-NeoBundle 'tomasr/molokai'
+NeoBundle 'altercation/vim-colors-solarized'
 
 "" Vim-Bootstrap Updater by sherzberg
 NeoBundle 'avelino/vim-bootstrap-updater'
@@ -182,7 +182,8 @@ set numberwidth=5
 
 let no_buffers_menu=1
 if !exists('g:not_finsh_neobundle')
-  colorscheme molokai
+  colorscheme solarized
+  call togglebg#map("<F5>")
 endif
 
 set mousemodel=popup
