@@ -133,9 +133,9 @@ set fileencodings=utf-8
 set backspace=indent,eol,start
 
 "" Tabs. May be overriten by autocmd rules
-set tabstop=4
+set tabstop=2
 set softtabstop=0
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 
 "" Map leader to ,
@@ -419,6 +419,8 @@ set visualbell t_vb=
 "" Copy/Paste/Cut
 if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
+else
+  set clipboard=unnamed
 endif
 
 noremap YY "+y<CR>
@@ -505,12 +507,17 @@ map <Leader>tc :ETcontroller
 map <Leader>tv :ETview
 map <Leader>tu :ETunittest
 map <Leader>tf :ETfunctionaltest
-map <Leader>sm :ESmodel
-map <Leader>sc :EScontroller
-map <Leader>sv :ESview
-map <Leader>su :ESunittest
-map <Leader>sf :ESfunctionaltest
-map <Leader>si :ESintegrationtest
+map <Leader>sm :Smodel
+map <Leader>sc :Scontroller
+map <Leader>sv :Sview
+map <Leader>su :Sunittest
+map <Leader>sf :Sfunctionaltest
+map <Leader>si :Sintegrationtest
+
+" Additional shortcuts for Rails resource
+map <Leader>r :Eresource
+map <Leader>sr :Sresource
+map <Leader>vr :Vresource
 
 " Edit routes
 command! Rroutes :e config/routes.rb
