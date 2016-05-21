@@ -48,7 +48,14 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle "Yggdroot/indentLine"
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-dispatch'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-sensible'
+NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
       \     'windows' : 'tools\\update-dll-mingw',
@@ -75,11 +82,12 @@ endif
 NeoBundle 'honza/vim-snippets'
 
 "" Color
-NeoBundle 'tomasr/molokai'
+NeoBundle 'altercation/vim-colors-solarized'
 
 "" Custom bundles
 "" Javascript Bundle
 NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'poetic/vim-textobj-javascript'
 
 "" Ruby Bundle
 NeoBundle "tpope/vim-rails"
@@ -87,6 +95,8 @@ NeoBundle "tpope/vim-rake"
 NeoBundle "tpope/vim-projectionist"
 NeoBundle "thoughtbot/vim-rspec"
 NeoBundle "ecomba/vim-ruby-refactoring"
+NeoBundle "tpope/vim-bundler"
+NeoBundle 'nelstrom/vim-textobj-rubyblock'
 
 "" HTML Bundle
 NeoBundle 'amirh/HTML-AutoCloseTag'
@@ -121,9 +131,9 @@ set fileencodings=utf-8
 set backspace=indent,eol,start
 
 "" Tabs. May be overriten by autocmd rules
-set tabstop=4
+set tabstop=2
 set softtabstop=0
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 
 "" Map leader to ,
@@ -146,7 +156,9 @@ set binary
 "" Directories for swp files
 set nobackup
 set noswapfile
+set nowritebackup
 
+set history=200
 set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/sh
@@ -163,13 +175,17 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
+set relativenumber
+set numberwidth=5
 
 let no_buffers_menu=1
 if !exists('g:not_finsh_neobundle')
-  colorscheme molokai
+  colorscheme solarized
+  call togglebg#map("<F5>")
 endif
 
 set mousemodel=popup
+set mouse=nicr
 set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
@@ -300,6 +316,9 @@ augroup vimrc-make-cmake
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
+"" scss
+autocmd BufNewFile,BufRead *.scss set filetype=css
+
 set autoread
 
 "*****************************************************************************
@@ -390,6 +409,8 @@ set visualbell t_vb=
 "" Copy/Paste/Cut
 if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
+else
+  set clipboard=unnamed
 endif
 
 noremap YY "+y<CR>
@@ -463,11 +484,42 @@ let g:tagbar_type_ruby = {
     \ ]
 \ }
 
+" Leader shortcuts for Rails commands (vim-rails)
+map <Leader>m :Emodel
+map <Leader>c :Econtroller
+map <Leader>v :Eview
+map <Leader>u :Eunittest
+map <Leader>f :Efunctionaltest
+map <Leader>i :Eintegrationtest
+map <Leader>h :Ehelper
+map <Leader>tm :ETmodel
+map <Leader>tc :ETcontroller
+map <Leader>tv :ETview
+map <Leader>tu :ETunittest
+map <Leader>tf :ETfunctionaltest
+map <Leader>sm :Smodel
+map <Leader>sc :Scontroller
+map <Leader>sv :Sview
+map <Leader>su :Sunittest
+map <Leader>sf :Sfunctionaltest
+map <Leader>si :Sintegrationtest
+
+" Additional shortcuts for Rails resource
+map <Leader>r :Eresource
+map <Leader>sr :Sresource
+map <Leader>vr :Vresource
+
+" Edit routes
+command! Rroutes :e config/routes.rb
+command! RTroutes :tabe config/routes.rb
+
 " RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>st :call RunCurrentSpecFile()<CR>
+map <Leader>ss :call RunNearestSpec()<CR>
+map <Leader>sl :call RunLastSpec()<CR>
+map <Leader>sa :call RunAllSpecs()<CR>
+
+let g:rspec_command = "Dispatch bin/rspec {spec}"
 
 " Ruby refactory
 nnoremap <leader>rap  :RAddParameter<cr>

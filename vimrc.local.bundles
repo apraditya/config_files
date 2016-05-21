@@ -1,0 +1,8 @@
+NeoBundle 'rizzatti/dash.vim'
+
+"" Additional Ruby Bundle
+NeoBundle 'tpope/vim-rbenv'
+NeoBundle 'vim-ruby/vim-ruby'
+
+" RSpec.vim local settings
+let g:rspec_runner = "os_x_iterm2"
