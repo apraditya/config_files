@@ -51,6 +51,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'rking/ag.vim'
+NeoBundle 'mbbill/undotree'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-endwise'
@@ -87,6 +88,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 "" Custom bundles
 "" Javascript Bundle
 NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'poetic/vim-textobj-javascript'
 
 "" Ruby Bundle
@@ -190,6 +192,7 @@ set mouse=nicr
 set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
+set background=dark
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
