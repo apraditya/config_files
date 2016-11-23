@@ -80,6 +80,11 @@ if v:version >= 704
   NeoBundle 'FelikZ/ctrlp-py-matcher'
 endif
 
+NeoBundle 'Shougo/deoplete.nvim'
+if has("python3")
+	let g:deoplete#enable_at_startup = 1
+endif
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'honza/vim-snippets'
 
 "" Color
@@ -384,10 +389,20 @@ let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
 " snippets
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-" let g:UltiSnipsEditSplit="vertical"
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+""" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.config/nvim/bundle/vim-snippets/snippets'
 
 " syntastic
 let g:syntastic_always_populate_loc_list=1
