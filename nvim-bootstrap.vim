@@ -102,6 +102,7 @@ NeoBundle 'nelstrom/vim-textobj-rubyblock'
 
 "" HTML Bundle
 NeoBundle 'amirh/HTML-AutoCloseTag'
+NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'whatyouhide/vim-textobj-xmlattr'
@@ -397,6 +398,22 @@ let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_html_tidy_quiet_messages={ "!level":  "errors" }
+
+" Try to use HTML5 Tidy for better checking?
+let g:syntastic_html_tidy_exec = '/usr/bin/tidy'
+
+" Set up the arrays to ignore for later
+if !exists('g:syntastic_html_tidy_ignore_errors')
+    let g:syntastic_html_tidy_ignore_errors = []
+endif
+
+if !exists('g:syntastic_html_tidy_blocklevel_tags')
+    let g:syntastic_html_tidy_blocklevel_tags = []
+endif
+
+" Ignore custom element
+let g:syntastic_html_tidy_ignore_errors += [
+      \ "is not recognized!"]
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
