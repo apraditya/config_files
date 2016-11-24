@@ -55,7 +55,6 @@ NeoBundle 'mbbill/undotree'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-sensible'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
