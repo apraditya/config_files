@@ -401,6 +401,9 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+" Disable neosnippet's default snippets (neosnippet-snippets)
+let g:neosnippet#disable_runtime_snippets = { "_": 1, }
+
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.config/nvim/bundle/vim-snippets/snippets'
 
