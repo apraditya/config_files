@@ -106,7 +106,6 @@ NeoBundle "tpope/vim-bundler"
 NeoBundle 'nelstrom/vim-textobj-rubyblock'
 
 "" HTML Bundle
-NeoBundle 'amirh/HTML-AutoCloseTag'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'gorodinskiy/vim-coloresque'
@@ -500,6 +499,11 @@ let g:javascript_enable_domhtmlcss = 1
 augroup vimrc-javascript
   autocmd!
   autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2 smartindent
+augroup END
+
+augroup vimrc-html
+  autocmd!
+  autocmd FileType html set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2 smartindent
 augroup END
 
 

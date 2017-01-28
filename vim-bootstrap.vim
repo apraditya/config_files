@@ -105,7 +105,6 @@ NeoBundle "tpope/vim-bundler"
 NeoBundle 'nelstrom/vim-textobj-rubyblock'
 
 "" HTML Bundle
-NeoBundle 'amirh/HTML-AutoCloseTag'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'gorodinskiy/vim-coloresque'
@@ -505,6 +504,11 @@ augroup vimrc-ruby
   autocmd!
   autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec setlocal filetype=ruby
   autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2 smartindent
+augroup END
+
+augroup vimrc-html
+  autocmd!
+  autocmd FileType html set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2 smartindent
 augroup END
 
 let g:tagbar_type_ruby = {
