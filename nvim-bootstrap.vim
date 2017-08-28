@@ -84,6 +84,7 @@ NeoBundle 'Shougo/deoplete.nvim'
 if has("python3")
 	let g:deoplete#enable_at_startup = 1
 endif
+let g:deoplete#disable_auto_complete = 1
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'honza/vim-snippets'
 
@@ -131,7 +132,7 @@ NeoBundleCheck
 "" Basic Setup
 "*****************************************************************************"
 "" Encoding
-" set encoding=utf-8
+set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
