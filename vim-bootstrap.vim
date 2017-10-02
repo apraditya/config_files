@@ -501,7 +501,13 @@ vnoremap K :m '<-2<CR>gv=gv
 "" Open current line on GitHub
 nnoremap <Leader>o :.Gbrowse<CR>
 
+"*****************************************************************************
 "" Custom configs
+"*****************************************************************************
+
+" html
+" for html files, 2 spaces
+autocmd Filetype html setlocal ts=2 sw=2 expandtab smartindent
 
 
 " javascript
@@ -571,10 +577,10 @@ command! Rroutes :e config/routes.rb
 command! RTroutes :tabe config/routes.rb
 
 " RSpec.vim mappings
-map <Leader>st :call RunCurrentSpecFile()<CR>
-map <Leader>ss :call RunNearestSpec()<CR>
-map <Leader>sl :call RunLastSpec()<CR>
-map <Leader>sa :call RunAllSpecs()<CR>
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 let g:rspec_command = "Dispatch bin/rspec {spec}"
 
