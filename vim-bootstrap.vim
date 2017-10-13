@@ -44,7 +44,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'jiangmiao/auto-pairs'
 Plug 'craigemery/vim-autotag'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
@@ -419,31 +419,13 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 
-" syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_html_tidy_quiet_messages={ "!level":  "errors" }
-
-" Try to use HTML5 Tidy for better checking?
-let g:syntastic_html_tidy_exec = '/usr/bin/tidy'
-
-" Set up the arrays to ignore for later
-if !exists('g:syntastic_html_tidy_ignore_errors')
-    let g:syntastic_html_tidy_ignore_errors = []
-endif
-
-if !exists('g:syntastic_html_tidy_blocklevel_tags')
-    let g:syntastic_html_tidy_blocklevel_tags = []
-endif
-
-" Ignore custom element
-let g:syntastic_html_tidy_ignore_errors += [
-      \ "is not recognized!"]
+" ale
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+let g:ale_fixers = {}
+let g:ale_fixers['javascript'] = ['prettier', 'eslint']
+let g:airline#extensions#ale#enabled = 1
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -512,6 +494,7 @@ autocmd Filetype html setlocal ts=2 sw=2 expandtab smartindent
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
+let g:javascript_plugin_flow = 1
 
 " vim-javascript
 augroup vimrc-javascript
