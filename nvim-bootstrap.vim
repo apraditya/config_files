@@ -77,6 +77,7 @@ endif
 
 if v:version >= 704
   "" Snippets
+  Plug 'roxma/nvim-completion-manager'
   Plug 'SirVer/ultisnips'
 endif
 
