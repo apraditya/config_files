@@ -1,13 +1,38 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="candy"
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git git-flow github git-extra rails ruby dirpersist z rbenv node npm heroku aws bgnotify safe-paste bundler tmux emoji ember-cli yarn docker docker-compose base16-shell zsh-completions zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
 if [ -e ~/.profile ]
 then source ~/.profile
 fi
-
-# completion
-autoload -U compinit
-compinit
-
-# automatically enter directories without cd
-setopt auto_cd
 
 # use vim as an editor
 export EDITOR=vim
@@ -17,64 +42,20 @@ if [ -e "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
 fi
 
-# vi mode
-bindkey -v
-
-# use incremental search
-bindkey ^R history-incremental-search-backward
-
-# expand functions in the prompt
-setopt prompt_subst
-
-# prompt
-#export PS1='[${SSH_CONNECTION+"%n@%m:"}%~] '
-PROMPT="$(print '%{\e[1;31m%}%m>%{\e[0m%}') "
-RPROMPT="$(print '%{\e[1;36m%}%40<...<%~ %{\e[2;33m%}<%*>%{\e[0m%}')"
-
-# ignore duplicate history entries
-setopt histignoredups
-
-# keep more history
-export HISTSIZE=30000
-export SAVEHIST=30000
-export HISTFILE=~/.hist_zsh
 # History awesomeness!  see rant at dotfiles.org/~brendano/.inputrc
 # (zsh does not use gnu readline, so doesnt use .inputrc, 
 # but this duplicates those features...)
-setopt inc_append_history
-setopt hist_verify
-setopt share_history
-setopt hist_ignore_dups
 setopt hist_no_store
 setopt hist_reduce_blanks
-setopt hist_expire_dups_first
 
 
 # More options (picked from these resources)
 # http://anyall.org/.zshrc
 # http://wiki.archlinux.org/index.php/Zsh
-setopt autopushd pushdminus pushdtohome pushdignoredups
-setopt cdablevars
 setopt interactivecomments
 setopt nobanghist
 setopt nohup
 setopt SH_WORD_SPLIT
-
-
-# Vars used later on by Zsh
-LS_COLORS='no=00;32:fi=00:di=00;34:ln=01;36:pi=04;33:so=01;35:bd=33;04:cd=33;04:or=31;01:ex=00;32:*.rtf=00;33:*.txt=00;33:*.html=00;33:*.doc=00;33:*.pdf=00;33:*.ps=00;33:*.sit=00;31:*.hqx=00;31:*.bin=00;31:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.deb=00;31:*.dmg=00;36:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.ppm=00;35:*.tga=00;35:*.xbm=00;35:*.xpm=00;35:*.tif=00;35:*.mpg=00;37:*.avi=00;37:*.gl=00;37:*.dl=00;37:*.mov=00;37:*.mp3=00;35:'
-export LS_COLORS;
-
-
-# allow approximate (tab completion)
-zmodload -i zsh/complist   # completion for MANY commands
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select
-
-# cd not select parent dir
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 
 # Key bindings 
@@ -101,9 +82,6 @@ bindkey "\eOc" forward-word
 
 
 
-# grep options
-export GREP_OPTIONS='--color=auto'
-
 ## FUNCTIONS
 fin() {
   find . -iname "*$1*"
@@ -124,53 +102,28 @@ nowdir() {
   mkdir $(date "+%y%m%d")-$1
 }
 
-# RVM Installation
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-
-# NVM Installation
-export NVM_DIR="/Users/apraditya/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-#autojump
-#Copyright Joel Schaerer 2008, 2009
-#This file is part of autojump
-
-#autojump is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
-#
-#autojump is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
-#
-#You should have received a copy of the GNU General Public License
-#along with autojump.  If not, see <http://www.gnu.org/licenses/>.
-
-#local data_dir=${XDG_DATA_HOME:-$([ -e ~/.local/share ] && echo ~/.local/share || echo ~)}
-local data_dir=$([ -e ~/.local/share ] && echo ~/.local/share || echo ~)
-if [[ "$data_dir" = "${HOME}" ]]
-then
-    export AUTOJUMP_DATA_DIR=${data_dir}
-else
-    export AUTOJUMP_DATA_DIR=${data_dir}/autojump
-fi
-if [ ! -e "${AUTOJUMP_DATA_DIR}" ]
-then
-    mkdir "${AUTOJUMP_DATA_DIR}"
-    mv ~/.autojump_py "${AUTOJUMP_DATA_DIR}/autojump_py" 2>>/dev/null #migration
-    mv ~/.autojump_py.bak "${AUTOJUMP_DATA_DIR}/autojump_py.bak" 2>>/dev/null
-    mv ~/.autojump_errors "${AUTOJUMP_DATA_DIR}/autojump_errors" 2>>/dev/null
-fi
-
-function autojump_preexec() {
-    { (autojump -a "$(pwd -P)"&)>/dev/null 2>>|${AUTOJUMP_DATA_DIR}/autojump_errors ; } 2>/dev/null
+# Find files containting particular word
+findin() {
+  find $2 -type f | xargs grep -i $1
 }
 
-typeset -ga preexec_functions
-preexec_functions+=autojump_preexec
+export PATH=/usr/local/sbin:/usr/local/bin:$HOME/bin:$PATH
+export GOPATH=/usr/local/opt/go/libexec/bin
+export JAVA_HOME=`/usr/libexec/java_home`
 
-alias jumpstat="autojump --stat"
+# === zsh-completions https://github.com/zsh-users/zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
 
-function j { local new_path="$(autojump $@)";if [ -n "$new_path" ]; then echo -e "\\033[31m${new_path}\\033[0m"; cd "$new_path";else false; fi }
+# rbenv setup: enabling shims and autocompletion
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# NVM Installation
+export NVM_DIR="$HOME/.nvm"
+source $(brew --prefix nvm)/nvm.sh
+
+# Fix Ctrl + H does not work
+# https://github.com/neovim/neovim/issues/2048
+export TERMINFO="$HOME/.terminfo"
+
+export NVIM_PYTHON_LOG_FILE=/tmp/log
+export NVIM_PYTHON_LOG_LEVEL=DEBUG
