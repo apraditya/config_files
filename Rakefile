@@ -44,7 +44,8 @@ def replace_file(file)
   link_file(file)
 end
 
-def link_file(file)
+def link_file(file, target_file = nil)
+  target_file ||= "$HOME/.#{file}"
   if file =~ /.erb$/
     puts "generating ~/.#{file.sub('.erb', '' )}"
     File.open( File.join( ENV['HOME'], ".#{file.sub('.erb', '' )}"), 'w' ) do |new_file|
@@ -52,6 +53,6 @@ def link_file(file)
     end
   else
     puts "linking ~/.#{file}"
-    system %Q{ ln -s "$PWD/#{file}" "$HOME/.#{file}" }
+    system %Q{ ln -s "$PWD/#{file}" #{target_file} }
   end
 end
