@@ -19,11 +19,6 @@ alias gci="git pull --rebase && rake && git push"
 alias tlf="tail -f"
 
 # My own aliases
-alias rcon="bundle exec pry -r ./config/environment"
-alias rser="rails s"
-alias rgen="rails g"
-alias rdes="rails destroy"
-alias bex="bundle exec"
 alias gapcs="git apply --check --stat"
 alias gaprejf="git apply --reject --whitespace=fix"
 
