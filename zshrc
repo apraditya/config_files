@@ -119,7 +119,11 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # NVM Installation
 export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
+if hash brew; then
+  source $(brew --prefix nvm)/nvm.sh
+else
+  source $NVM_DIR/nvm.sh
+fi
 
 # Fix Ctrl + H does not work
 # https://github.com/neovim/neovim/issues/2048
