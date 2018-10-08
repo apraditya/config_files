@@ -87,7 +87,7 @@ endif
 Plug 'honza/vim-snippets'
 
 "" Color
-Plug 'altercation/vim-colors-solarized'
+Plug 'kaicataldo/material.vim'
 Plug 'chriskempson/base16-vim'
 " Plug 'tomasr/molokai'
 
@@ -198,8 +198,7 @@ if !exists('g:not_finish_vimplug')
     let base16colorspace=256
     source ~/.vimrc_background
   endif
-  colorscheme base16-solarized-dark
-  call togglebg#map("<F5>")
+  colorscheme material
 endif
 
 set mousemodel=popup
@@ -223,6 +222,10 @@ else
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
+endif
+
+if (has("termguicolors"))
+  set termguicolors
 endif
 
 
