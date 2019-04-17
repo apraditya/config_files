@@ -25,7 +25,7 @@ ZSH_THEME="candy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow github git-extra rails ruby dirpersist z rbenv node npm heroku aws bgnotify safe-paste bundler tmux emoji ember-cli yarn docker docker-compose base16-shell zsh-completions zsh-syntax-highlighting)
+plugins=(git git-flow github git-extras rails ruby dirpersist z rbenv node npm heroku aws bgnotify safe-paste bundler tmux emoji ember-cli yarn docker docker-compose base16-shell zsh-completions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 

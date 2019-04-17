@@ -1,35 +1,61 @@
 #!/bin/sh
 
-brew install psgrep
-brew install nodejs
-brew install zsh-completions
+brew install ack
+brew install bat
+brew install ctags
+brew install diff-so-fancy
+brew install fzf
+brew install git
 brew install git-flow
+brew install hub
+brew install imagemagick
+brew install memcached
+brew install neovim
+brew install nvm
+brew install psgrep
+brew install python
+brew install rbenv
+brew install rbenv-ctags
+brew install rbenv-default-gems
+brew install rbenv-gemset
+brew install redis
+brew install ruby-build
+brew install sqlite
+brew install the_silver_searcher
+brew install tig
+brew install tmux
+brew install tree
+brew install vim
+brew install wget
+brew install yarn
 
 # Homebrew Cask
 # a CLI workflow for the administration of Mac applications distributed as binaries
 brew tap caskroom/cask
 brew install brew-cask
 
-brew cask install airmail
-brew cask install cloud
-brew cask install cloudup
+brew cask install alfred
+brew cask install brave
+brew cask install cyberduck
 brew cask install disk-inventory-x
 brew cask install dnscrypt
+brew cask install docker-toolbox
 brew cask install dropbox
-brew cask install evernote
 brew cask install firefox
-brew cask install flux
-brew cask install gitbox
-brew cask install google-drive
+brew cask install fork
+brew cask install google-drive-file-stream
 brew cask install google-chrome
-brew cask install google-hangouts
-brew cask install messenger-for-telegram
-brew cask install mou
-brew cask install ngrok
-brew cask install nvalt
+brew cask install java
+brew cask install keycastr
+brew cask install macdown
 brew cask install onyx
+brew cask install rescuetime
+brew cask install rowanj-gitx
 brew cask install sequel-pro
 brew cask install skype
-brew cask install slack
-brew cask install textexpander
+brew cask install spectacle
+brew cask install sublime-text
+brew cask install table-tool
+brew cask install vimr
+brew cask install visual-studio-code
 brew cask install vlc
