@@ -28,6 +28,7 @@ brew install tree
 brew install vim
 brew install wget
 brew install yarn
+brew install zsh-completions
 
 # Homebrew Cask
 # a CLI workflow for the administration of Mac applications distributed as binaries
@@ -39,7 +40,7 @@ brew cask install brave
 brew cask install cyberduck
 brew cask install disk-inventory-x
 brew cask install dnscrypt
-brew cask install docker-toolbox
+brew cask install docker
 brew cask install dropbox
 brew cask install firefox
 brew cask install fork
