@@ -18,6 +18,7 @@ brew install rbenv
 brew install rbenv-ctags
 brew install rbenv-default-gems
 brew install rbenv-gemset
+brew install reattach-to-user-namespace
 brew install redis
 brew install ruby-build
 brew install sqlite
@@ -36,7 +37,7 @@ brew tap caskroom/cask
 brew install brew-cask
 
 brew cask install alfred
-brew cask install brave
+brew cask install brave-browser
 brew cask install cyberduck
 brew cask install disk-inventory-x
 brew cask install dnscrypt
