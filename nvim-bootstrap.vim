@@ -87,6 +87,11 @@ endif
 
 Plug 'honza/vim-snippets'
 
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+\ }
+
 "" Color
 Plug 'sts10/vim-mustard'
 Plug 'chriskempson/base16-vim'
@@ -427,6 +432,11 @@ let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier', 'eslint']
 let g:airline#extensions#ale#enabled = 1
 
+" LanguageClient
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
@@ -528,6 +538,12 @@ let g:tagbar_type_ruby = {
         \ 'F:singleton methods'
     \ ]
 \ }
+
+" configuration for LanguageClient
+let g:LanguageClient_serverCommands = {
+  \ 'python': ['/usr/local/bin/pyls'],
+  \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+  \ }
 
 " Leader shortcuts for Rails commands (vim-rails)
 map <Leader>m :Emodel
