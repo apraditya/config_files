@@ -1,12 +1,8 @@
-" vim-bootstrap 89346c6
+" vim-bootstrap 
 
 "*****************************************************************************
 "" Vim-PLug core
 "*****************************************************************************
-if has('vim_starting')
-  set nocompatible               " Be iMproved
-endif
-
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
 let g:vim_bootstrap_langs = "javascript,ruby,html"
@@ -19,7 +15,7 @@ if !filereadable(vimplug_exists)
   endif
   echo "Installing Vim-Plug..."
   echo ""
-  silent !\curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent exec "!\curl -fLo " . vimplug_exists . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   let g:not_finish_vimplug = "yes"
 
   autocmd VimEnter * PlugInstall
@@ -58,6 +54,8 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -73,17 +71,6 @@ Plug 'Shougo/vimproc.vim', {'do': g:make}
 "" Vim-Session
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-
-if v:version >= 703
-  Plug 'Shougo/vimshell.vim'
-endif
-
-if v:version >= 704
-  "" Snippets
-  Plug 'ncm2/ncm2'
-  Plug 'ncm2/ncm2-ultisnips'
-  Plug 'SirVer/ultisnips'
-endif
 
 Plug 'honza/vim-snippets'
 
@@ -101,13 +88,22 @@ Plug 'chriskempson/base16-vim'
 "" Custom bundles
 "*****************************************************************************
 
+" html
+"" HTML Bundle
+Plug 'hail2u/vim-css3-syntax'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'tpope/vim-haml'
+Plug 'mattn/emmet-vim'
+
+
+" javascript
 "" Javascript Bundle
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'poetic/vim-textobj-javascript'
 
 
-"" Ruby Bundle
+" ruby
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-projectionist'
@@ -115,13 +111,6 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'tpope/vim-bundler'
 Plug 'nelstrom/vim-textobj-rubyblock'
-
-
-"" HTML Bundle
-Plug 'hail2u/vim-css3-syntax'
-Plug 'gorodinskiy/vim-coloresque'
-Plug 'tpope/vim-haml'
-Plug 'mattn/emmet-vim'
 
 
 "*****************************************************************************
@@ -145,8 +134,6 @@ filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-set bomb
-set binary
 
 
 "" Fix backspace indent
@@ -303,16 +290,15 @@ let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'
 
-" vimshell.vim
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt =  '$ '
-
 " terminal emulation
-if g:vim_bootstrap_editor == 'nvim'
-  nnoremap <silent> <leader>sh :terminal<CR>
-else
-  nnoremap <silent> <leader>sh :VimShellCreate<CR>
-endif
+nnoremap <silent> <leader>sh :terminal<CR>
+
+
+"*****************************************************************************
+"" Commands
+"*****************************************************************************
+" remove trailing whitespaces
+command! FixWhitespace :%s/\s\+$//e
 
 "*****************************************************************************
 "" Functions
