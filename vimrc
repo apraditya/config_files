@@ -199,7 +199,6 @@ if !exists('g:not_finish_vimplug')
   else
     colorscheme mustard
   endif
-  call togglebg#map("<F5>")
 endif
 
 set mousemodel=popup
