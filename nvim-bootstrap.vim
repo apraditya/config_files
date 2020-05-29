@@ -88,7 +88,7 @@ endif
 Plug 'honza/vim-snippets'
 
 "" Color
-Plug 'kaicataldo/material.vim'
+Plug 'sts10/vim-mustard'
 Plug 'chriskempson/base16-vim'
 " Plug 'tomasr/molokai'
 
@@ -198,8 +198,9 @@ if !exists('g:not_finish_vimplug')
   if filereadable(expand("~/.vimrc_background"))
     let base16colorspace=256
     source ~/.vimrc_background
+  else
+    colorscheme mustard
   endif
-  colorscheme material
 endif
 
 set mousemodel=popup

@@ -86,7 +86,7 @@ endif
 Plug 'honza/vim-snippets'
 
 "" Color
-Plug 'altercation/vim-colors-solarized'
+Plug 'sts10/vim-mustard'
 Plug 'chriskempson/base16-vim'
 " Plug 'tomasr/molokai'
 
@@ -196,8 +196,9 @@ if !exists('g:not_finish_vimplug')
   if filereadable(expand("~/.vimrc_background"))
     let base16colorspace=256
     source ~/.vimrc_background
+  else
+    colorscheme mustard
   endif
-  colorscheme base16-solarized-dark
   call togglebg#map("<F5>")
 endif
 
