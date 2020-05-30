@@ -542,6 +542,7 @@ let g:tagbar_type_ruby = {
 " configuration for LanguageClient
 let g:LanguageClient_serverCommands = {
   \ 'python': ['/usr/local/bin/pyls'],
+  \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
   \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
   \ }
 
