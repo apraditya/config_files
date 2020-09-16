@@ -1,21 +1,28 @@
 " vim-bootstrap 
 
 "*****************************************************************************
-"" Vim-PLug core
+"" Vim-Plug core
 "*****************************************************************************
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+if has('win32')&&!has('win64')
+  let curl_exists=expand('C:\Windows\Sysnative\curl.exe')
+else
+  let curl_exists=expand('curl')
+endif
 
 let g:vim_bootstrap_langs = "javascript,ruby,html"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
+let g:vim_bootstrap_theme = "mustard"
+let g:vim_bootstrap_frams = ""
 
 if !filereadable(vimplug_exists)
-  if !executable("curl")
+  if !executable(curl_exists)
     echoerr "You have to install curl or first install vim-plug yourself!"
     execute "q!"
   endif
   echo "Installing Vim-Plug..."
   echo ""
-  silent exec "!\curl -fLo " . vimplug_exists . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  silent exec "!"curl_exists" -fLo " . shellescape(vimplug_exists) . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   let g:not_finish_vimplug = "yes"
 
   autocmd VimEnter * PlugInstall
@@ -41,7 +48,7 @@ Plug 'vim-scripts/CSApprox'
 Plug 'Raimondi/delimitMate'
 Plug 'craigemery/vim-autotag'
 Plug 'majutsushi/tagbar'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
@@ -54,6 +61,9 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
+Plug 'sts10/vim-mustard'
+Plug 'chriskempson/base16-vim'
+
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -80,11 +90,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
 \ }
 
-"" Color
-Plug 'sts10/vim-mustard'
-Plug 'chriskempson/base16-vim'
-" Plug 'tomasr/molokai'
-
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
@@ -92,7 +97,7 @@ Plug 'chriskempson/base16-vim'
 " html
 "" HTML Bundle
 Plug 'hail2u/vim-css3-syntax'
-Plug 'gorodinskiy/vim-coloresque'
+Plug 'gko/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
 
@@ -109,7 +114,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-projectionist'
 Plug 'thoughtbot/vim-rspec'
-Plug 'ecomba/vim-ruby-refactoring'
+Plug 'ecomba/vim-ruby-refactoring', {'tag': 'main'}
 Plug 'tpope/vim-bundler'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
@@ -140,7 +145,7 @@ set fileencodings=utf-8
 "" Fix backspace indent
 set backspace=indent,eol,start
 
-"" Tabs. May be overriten by autocmd rules
+"" Tabs. May be overridden by autocmd rules
 set tabstop=2
 set softtabstop=0
 set shiftwidth=2
@@ -157,11 +162,6 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
-"" Directories for swp files
-set nobackup
-set noswapfile
-set nowritebackup
 
 set fileformats=unix,dos,mac
 
@@ -201,7 +201,6 @@ set mouse=nicr
 set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
-set background=dark
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
@@ -219,14 +218,14 @@ else
 
 endif
 
-if (has("termguicolors"))
-  set termguicolors
-endif
 
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
-set scrolloff=3
+
+au TermEnter * setlocal scrolloff=0
+au TermLeave * setlocal scrolloff=3
+
 
 "" Status bar
 set laststatus=2
@@ -419,6 +418,7 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier', 'eslint']
+let g:ale_linters = {}
 let g:airline#extensions#ale#enabled = 1
 
 " LanguageClient
@@ -439,8 +439,6 @@ endif
 "" Copy/Paste/Cut
 if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
-else
-  set clipboard=unnamed
 endif
 
 noremap YY "+y<CR>
@@ -493,7 +491,6 @@ autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
-let g:javascript_plugin_flow = 1
 
 " vim-javascript
 augroup vimrc-javascript
