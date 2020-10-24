@@ -131,3 +131,5 @@ export TERMINFO="$HOME/.terminfo"
 
 export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
