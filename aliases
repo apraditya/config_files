@@ -47,6 +47,14 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cgrep='grep --color=always'
 
+# Docker compose
+alias dce_bundle='docker-compose exec app bin/bundle'
+alias dce_rails='docker-compose exec app bin/rails'
+alias dce_rake='docker-compose exec app bin/rake'
+alias dce_rspec='docker-compose exec app bin/rspec'
+alias dce_rspecp='docker-compose exec app bin/parallel_rspec'
+alias dce_rubocop='docker-compose exec app bin/rubocop -c .rubocop.yml'
+
 # Heroku build
 alias hbuild-console='heroku run console --remote build'
 alias hbuild-process='watch heroku ps --remote build'
