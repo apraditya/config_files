@@ -31,23 +31,23 @@ cask 'cyberduck'
 cask 'docker'
 cask 'dropbox'
 cask 'firefox'
-cask 'google-chrome'
-cask 'google-drive-file-stream'
-cask 'google-hangouts'
-cask 'libreoffice'
-cask 'macdown'
+cask 'fork'
+cask 'iterm2-beta'
+cask 'postman'
 cask 'rescuetime'
 cask 'rowanj-gitx'
 cask 'rectangle'
 cask 'sublime-text'
 cask 'superduper'
-cask 'transmission'
 cask 'visual-studio-code'
 cask 'vlc'
 
+mas 'Guidance', id: 412759995
+mas 'LastPass', id: 926036361
 mas 'Numbers', id: 409203825
 mas 'PopClip', id: 445189367
 mas 'Quran Majeed', id: 411622604
 mas 'Slack', id: 803453959
 mas 'Simplenote', id: 692867256
+mas 'Table Tool', id: 1122008420
 
