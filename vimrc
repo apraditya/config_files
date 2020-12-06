@@ -12,7 +12,7 @@ endif
 
 let g:vim_bootstrap_langs = "javascript,ruby,html"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
-let g:vim_bootstrap_theme = "mustard"
+let g:vim_bootstrap_theme = "material"
 let g:vim_bootstrap_frams = ""
 
 if !filereadable(vimplug_exists)
@@ -62,6 +62,7 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'sts10/vim-mustard'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'chriskempson/base16-vim'
 
 if isdirectory('/usr/local/opt/fzf')
@@ -186,7 +187,7 @@ if !exists('g:not_finish_vimplug')
     let base16colorspace=256
     source ~/.vimrc_background
   else
-    colorscheme mustard
+    colorscheme material
   endif
 endif
 
