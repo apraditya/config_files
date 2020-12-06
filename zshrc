@@ -25,7 +25,7 @@ ZSH_THEME="candy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow github git-extras gitfast rails ruby dirpersist z rbenv node npm heroku aws bgnotify safe-paste bundler tmux emoji ember-cli yarn docker docker-compose base16-shell zsh-completions zsh-syntax-highlighting colored-man-pages vi-mode iterm2 dotenv)
+plugins=(git git-flow github git-extras gitfast rails ruby dirpersist z rbenv node npm heroku aws bgnotify safe-paste bundler tmux emoji ember-cli yarn docker docker-compose zsh-completions zsh-syntax-highlighting colored-man-pages vi-mode iterm2 dotenv)
 
 ZSH_DOTENV_PROMPT=false
 
@@ -124,7 +124,8 @@ export NVM_DIR="$HOME/.nvm"
 if hash brew; then
   source $(brew --prefix nvm)/nvm.sh
 else
-  source $NVM_DIR/nvm.sh
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
 # Fix Ctrl + H does not work
