@@ -13,10 +13,6 @@
   stp   = stash pop
   sts   = stash show
 
-[pager]
-  diff  = diff-so-fancy | less --tabs=1,5 -RFX
-  show  = diff-so-fancy | less --tabs=1,5 -RFX
-
 [color "diff"]
 	meta        = yellow
   frag        = magenta bold
@@ -30,6 +26,13 @@
 	oldHighlight  = red bold 52
 	newNormal     = green bold
 	newHighlight  = green bold 22
+
+[pager]
+  diff  = diff-so-fancy | less --tabs=1,5 -RFX
+  show  = diff-so-fancy | less --tabs=1,5 -RFX
+
+[pull]
+  rebase  = true
 
 
 # DO NOT EDIT BELOW THIS LINE
