@@ -25,8 +25,9 @@ ZSH_THEME="candy"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow github git-extras gitfast rails ruby dirpersist z rbenv node npm heroku aws bgnotify safe-paste bundler tmux emoji ember-cli yarn docker docker-compose zsh-completions zsh-syntax-highlighting colored-man-pages vi-mode iterm2 dotenv)
+plugins=(git git-flow github git-extras gitfast rails ruby dirpersist z rbenv node npm heroku aws bgnotify safe-paste bundler tmux emoji fzf yarn docker docker-compose zsh-completions zsh-syntax-highlighting colored-man-pages vi-mode iterm2 dotenv)
 
+FZF_BASE=$(which fzf)
 ZSH_DOTENV_PROMPT=false
 
 source $ZSH/oh-my-zsh.sh
@@ -113,12 +114,6 @@ export PATH=/usr/local/sbin:/usr/local/bin:$HOME/bin:$PATH
 export GOPATH=/usr/local/opt/go/libexec/bin
 export JAVA_HOME=`/usr/libexec/java_home`
 
-# === zsh-completions https://github.com/zsh-users/zsh-completions
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-# rbenv setup: enabling shims and autocompletion
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 # NVM Installation
 export NVM_DIR="$HOME/.nvm"
 if hash brew; then
@@ -134,5 +129,3 @@ export TERMINFO="$HOME/.terminfo"
 
 export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
