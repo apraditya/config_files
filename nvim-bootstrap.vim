@@ -65,7 +65,6 @@ Plug 'sts10/vim-mustard'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'chriskempson/base16-vim'
 
-
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -141,7 +140,7 @@ filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-
+set ttyfast
 
 "" Fix backspace indent
 set backspace=indent,eol,start
