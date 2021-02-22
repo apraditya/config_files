@@ -114,14 +114,8 @@ export PATH=/usr/local/sbin:/usr/local/bin:$HOME/bin:$PATH
 export GOPATH=/usr/local/opt/go/libexec/bin
 export JAVA_HOME=`/usr/libexec/java_home`
 
-# NVM Installation
-export NVM_DIR="$HOME/.nvm"
-if hash brew; then
-  source $(brew --prefix nvm)/nvm.sh
-else
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-fi
+# Fast Node Manager (fnm)
+eval "$(fnm env)"
 
 # Fix Ctrl + H does not work
 # https://github.com/neovim/neovim/issues/2048
