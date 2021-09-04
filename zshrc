@@ -175,7 +175,10 @@ findin() {
 
 export PATH=/usr/local/sbin:/usr/local/bin:$HOME/bin:$PATH
 export GOPATH=/usr/local/opt/go/libexec/bin
-export JAVA_HOME=`/usr/libexec/java_home`
+if [ -e "/usr/libexec/java_home" ]; then
+  export JAVA_HOME=`/usr/libexec/java_home`
+fi
+
 
 # Fast Node Manager (fnm)
 eval "$(fnm env)"
