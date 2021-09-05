@@ -67,8 +67,7 @@ ZSH_THEME="candy"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow github git-extras gitfast rails ruby dirpersist z rbenv node npm heroku aws bgnotify safe-paste bundler tmux emoji fzf yarn docker docker-compose zsh-completions zsh-syntax-highlighting colored-man-pages vi-mode iterm2 dotenv)
+plugins=(git git-flow git-extras gitfast rails ruby dirpersist z rbenv node npm aws bgnotify safe-paste bundler tmux emoji fzf yarn docker docker-compose zsh-completions zsh-syntax-highlighting colored-man-pages vi-mode dotenv)
 
 FZF_BASE=$(which fzf)
 ZSH_DOTENV_PROMPT=false
