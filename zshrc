@@ -173,7 +173,7 @@ findin() {
   find $2 -type f | xargs grep -i $1
 }
 
-export PATH=/usr/local/sbin:/usr/local/bin:$HOME/bin:$PATH
+export PATH=/usr/local/sbin:/usr/local/bin:$HOME/.yarn/bin:$HOME/bin:$PATH
 export GOPATH=/usr/local/opt/go/libexec/bin
 if [ -e "/usr/libexec/java_home" ]; then
   export JAVA_HOME=`/usr/libexec/java_home`
@@ -181,6 +181,7 @@ fi
 
 
 # Fast Node Manager (fnm)
+export PATH=$HOME/.fnm:$PATH
 eval "$(fnm env)"
 
 # Fix Ctrl + H does not work
