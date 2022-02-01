@@ -10,6 +10,7 @@ brew 'fzf'
 brew 'git'
 brew 'git-flow'
 brew 'hub'
+brew 'mas'
 brew 'neovim'
 brew 'npm'
 brew 'psgrep'
@@ -29,33 +30,35 @@ brew 'yarn'
 brew 'zsh'
 
 cask 'adoptopenjdk'
-cask 'alfred'
 cask 'brave-browser'
 cask 'cheatsheet'
 cask 'cyberduck'
 cask 'dbeaver-community'
 cask 'docker'
+cask 'discord'
 cask 'firefox'
 cask 'fork'
+cask 'handbrake'
 cask 'iterm2-beta'
 cask 'megasync'
+cask 'notion'
 cask 'postman'
+cask 'raycast'
 cask 'rescuetime'
-cask 'rowanj-gitx'
 cask 'rectangle'
+cask 'rowanj-gitx'
 cask 'sublime-text'
 cask 'superduper'
+cask 'telegram'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'zoom'
 
 mas 'Guidance', id: 412759995
-mas 'Hand Mirror', id: 1502839586
 mas 'LastPass', id: 926036361
-mas 'Numbers', id: 409203825
-mas 'PopClip', id: 445189367
+mas 'LimeChat', id: 414030210
 mas 'Quran Majeed', id: 411622604
 mas 'Slack', id: 803453959
-mas 'Simplenote', id: 692867256
 mas 'Table Tool', id: 1122008420
+mas 'Tailscale', id: 1475387142
 
