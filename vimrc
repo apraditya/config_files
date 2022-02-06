@@ -513,6 +513,10 @@ let g:tagbar_type_ruby = {
     \ ]
 \ }
 
+" python
+let g:python3_host_prog = "/usr/bin/python3"
+let g:python_host_prog = "/usr/bin/python2"
+
 " Leader shortcuts for Rails commands (vim-rails)
 map <Leader>m :Emodel
 map <Leader>c :Econtroller
