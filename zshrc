@@ -75,7 +75,35 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow git-extras gitfast rails ruby dirpersist z rbenv node npm aws bgnotify safe-paste bundler tmux emoji fzf yarn docker docker-compose zsh-completions zsh-syntax-highlighting colored-man-pages vi-mode dotenv)
+plugins=(
+  aws
+  bgnotify
+  bundler
+  colored-man-pages
+  dirpersist
+  docker
+  docker-compose
+  dotenv
+  emoji
+  fzf
+  git
+  git-flow
+  git-extras
+  gitfast
+  node
+  npm
+  rails
+  rbenv
+  ruby
+  safe-paste
+  tmux
+  vi-mode
+  yarn
+  z
+  zsh-autosuggestions
+  zsh-completions
+  zsh-syntax-highlighting
+)
 autoload -U compinit && compinit
 
 FZF_BASE=$(which fzf)
