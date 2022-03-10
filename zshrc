@@ -78,6 +78,7 @@ plugins=(
   docker
   docker-compose
   dotenv
+  evalcache
   fzf
   git
   git-flow
@@ -86,7 +87,6 @@ plugins=(
   node
   npm
   rails
-  rbenv
   ruby
   safe-paste
   tmux
@@ -207,10 +207,13 @@ if [ -e "/usr/libexec/java_home" ]; then
   export JAVA_HOME=`/usr/libexec/java_home`
 fi
 
+# rbenv
+_evalcache rbenv init --no-rehash - zsh
+
 
 # Fast Node Manager (fnm)
 export PATH=$HOME/.fnm:$PATH
-eval "$(fnm env)"
+_evalcache fnm env
 
 # Fix Ctrl + H does not work
 # https://github.com/neovim/neovim/issues/2048
