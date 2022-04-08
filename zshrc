@@ -222,3 +222,9 @@ export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "${HOME}/src/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/src/google-cloud-sdk/path.zsh.inc"; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f "${HOME}/src/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/src/google-cloud-sdk/completion.zsh.inc"; fi
