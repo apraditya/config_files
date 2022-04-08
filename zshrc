@@ -76,7 +76,6 @@ plugins=(
   colored-man-pages
   dirpersist
   docker
-  docker-compose
   dotenv
   evalcache
   fzf

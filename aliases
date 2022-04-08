@@ -48,13 +48,31 @@ alias ....='cd ../../..'
 alias cgrep='grep --color=always'
 
 # Docker compose
-alias dce_bundle='docker-compose exec app bin/bundle'
-alias dce_rails='docker-compose exec app bin/rails'
-alias dce_rake='docker-compose exec app bin/rake'
-alias dce_rspec='docker-compose exec app bin/rspec'
-alias dce_rspecp='docker-compose exec app bin/parallel_rspec'
-alias dce_rubocop='docker-compose exec app bin/rubocop -c .rubocop.yml'
-alias dce_spring='docker-compose exec app bin/spring'
+alias dco="docker compose"
+alias dcb="docker compose build"
+alias dce="docker compose exec"
+alias dcps="docker compose ps"
+alias dcrm="docker compose rm"
+alias dcrun="docker compose run"
+alias dcup="docker compose up"
+alias dcupb="docker compose up --build"
+alias dcupd="docker compose up -d"
+alias dcdown="docker compose down"
+alias dclog="docker compose logs"
+alias dclogf="docker compose logs -f"
+alias dcpull="docker compose pull"
+alias dcrestart="docker compose restart"
+alias dcstart="docker compose start"
+alias dcstop="docker compose stop"
+alias dck="docker compose kill"
+
+alias dce_bundle='docker compose exec rails bin/bundle'
+alias dce_rails='docker compose exec rails bin/rails'
+alias dce_rake='docker compose exec rails bin/rake'
+alias dce_rspec='docker compose exec rails bin/rspec'
+alias dce_rspecp='docker compose exec rails bin/parallel_rspec'
+alias dce_rubocop='docker compose exec rails bin/rubocop -c .rubocop.yml'
+alias dce_spring='docker compose exec rails bin/spring'
 
 # Heroku build
 alias hbuild-console='heroku run console --remote build'
