@@ -69,10 +69,14 @@ alias dck="docker compose kill"
 alias dce_bundle='docker compose exec rails bin/bundle'
 alias dce_rails='docker compose exec rails bin/rails'
 alias dce_rake='docker compose exec rails bin/rake'
-alias dce_rspec='docker compose exec rails bin/rspec'
-alias dce_rspecp='docker compose exec rails bin/parallel_rspec'
+alias dce_rspec='docker compose exec -e RAILS_ENV=test rails bin/rspec'
+alias dce_rspecp='docker compose exec -e RAILS_ENV=test rails bin/parallel_rspec'
 alias dce_rubocop='docker compose exec rails bin/rubocop -c .rubocop.yml'
 alias dce_spring='docker compose exec rails bin/spring'
+
+alias dc_prof='docker compose --profile'
+alias dc_prof_fup='docker compose --profile frontend up'
+alias dc_prof_fdown='docker compose --profile frontend down'
 
 # Heroku build
 alias hbuild-console='heroku run console --remote build'
