@@ -100,7 +100,41 @@ autoload -U compinit && compinit
 FZF_BASE=$(which fzf)
 ZSH_DOTENV_PROMPT=false
 
-source $ZSH/oh-my-zsh.sh
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+
+  source $ZSH/oh-my-zsh.sh
+
+  # Key bindings 
+  # http://anyall.org/.zshrc works best for me
+  bindkey "\e[A" history-beginning-search-backward
+  bindkey "\e[B" history-beginning-search-forward
+  bindkey "\eOA" history-beginning-search-backward
+  bindkey "\eOB" history-beginning-search-forward
+
+  bindkey "\e[1~" beginning-of-line
+  bindkey "\e[2~" quoted-insert
+  bindkey "\e[3~" delete-char
+  bindkey "\e[4~" end-of-line
+  bindkey "\e[5~" beginning-of-history
+  bindkey "\e[6~" end-of-history
+  bindkey "\e[7~" beginning-of-line
+  bindkey "\e[8~" end-of-line
+  bindkey "\e[H" beginning-of-line
+  bindkey "\e[F" end-of-line
+  bindkey "\eOH" beginning-of-line
+  bindkey "\eOF" end-of-line
+  bindkey "\eOd" backward-word
+  bindkey "\eOc" forward-word 
+
+  # rbenv
+  _evalcache rbenv init --no-rehash - zsh
+
+
+  # Fast Node Manager (fnm)
+  export PATH=$HOME/.fnm:$PATH
+  _evalcache fnm env
+
+fi
 
 # User configuration
 
@@ -148,31 +182,7 @@ setopt hist_reduce_blanks
 setopt interactivecomments
 setopt nobanghist
 setopt nohup
-setopt SH_WORD_SPLIT
-
-
-# Key bindings 
-# http://anyall.org/.zshrc works best for me
-bindkey "\e[A" history-beginning-search-backward
-bindkey "\e[B" history-beginning-search-forward
-bindkey "\eOA" history-beginning-search-backward
-bindkey "\eOB" history-beginning-search-forward
-
-bindkey "\e[1~" beginning-of-line
-bindkey "\e[2~" quoted-insert
-bindkey "\e[3~" delete-char
-bindkey "\e[4~" end-of-line
-bindkey "\e[5~" beginning-of-history
-bindkey "\e[6~" end-of-history
-bindkey "\e[7~" beginning-of-line
-bindkey "\e[8~" end-of-line
-bindkey "\e[H" beginning-of-line
-bindkey "\e[F" end-of-line
-bindkey "\eOH" beginning-of-line
-bindkey "\eOF" end-of-line
-bindkey "\eOd" backward-word
-bindkey "\eOc" forward-word 
-
+# setopt SH_WORD_SPLIT
 
 
 ## FUNCTIONS
@@ -205,14 +215,6 @@ export GOPATH=/usr/local/opt/go/libexec/bin
 if [ -e "/usr/libexec/java_home" ]; then
   export JAVA_HOME=`/usr/libexec/java_home`
 fi
-
-# rbenv
-_evalcache rbenv init --no-rehash - zsh
-
-
-# Fast Node Manager (fnm)
-export PATH=$HOME/.fnm:$PATH
-_evalcache fnm env
 
 # Fix Ctrl + H does not work
 # https://github.com/neovim/neovim/issues/2048
