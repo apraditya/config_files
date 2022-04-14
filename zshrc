@@ -100,6 +100,19 @@ autoload -U compinit && compinit
 FZF_BASE=$(which fzf)
 ZSH_DOTENV_PROMPT=false
 
+export PATH=/usr/local/sbin:/usr/local/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.fnm:$PATH
+export GOPATH=/usr/local/opt/go/libexec/bin
+if [ -e "/usr/libexec/java_home" ]; then
+  export JAVA_HOME=`/usr/libexec/java_home`
+fi
+
+# Fix Ctrl + H does not work
+# https://github.com/neovim/neovim/issues/2048
+export TERMINFO="$HOME/.terminfo"
+
+export NVIM_PYTHON_LOG_FILE=/tmp/log
+export NVIM_PYTHON_LOG_LEVEL=DEBUG
+
 if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
 
   source $ZSH/oh-my-zsh.sh
@@ -129,10 +142,19 @@ if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
   # rbenv
   _evalcache rbenv init --no-rehash - zsh
 
-
   # Fast Node Manager (fnm)
-  export PATH=$HOME/.fnm:$PATH
   _evalcache fnm env
+
+else
+
+  # fnm setup
+  eval "$(fnm env)"
+
+  # rbenv setup
+  eval "$(rbenv init -)"
+
+  # z autojump setup
+  . $ZSH/plugins/z/z.sh
 
 fi
 
@@ -209,19 +231,6 @@ nowdir() {
 findin() {
   find $2 -type f | xargs grep -i $1
 }
-
-export PATH=/usr/local/sbin:/usr/local/bin:$HOME/.yarn/bin:$HOME/bin:$PATH
-export GOPATH=/usr/local/opt/go/libexec/bin
-if [ -e "/usr/libexec/java_home" ]; then
-  export JAVA_HOME=`/usr/libexec/java_home`
-fi
-
-# Fix Ctrl + H does not work
-# https://github.com/neovim/neovim/issues/2048
-export TERMINFO="$HOME/.terminfo"
-
-export NVIM_PYTHON_LOG_FILE=/tmp/log
-export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
