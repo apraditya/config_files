@@ -228,3 +228,8 @@ if [ -f "${HOME}/src/google-cloud-sdk/path.zsh.inc" ]; then . "${HOME}/src/googl
 
 # The next line enables shell command completion for gcloud.
 if [ -f "${HOME}/src/google-cloud-sdk/completion.zsh.inc" ]; then . "${HOME}/src/google-cloud-sdk/completion.zsh.inc"; fi
+
+# >>>> Vagrant command completion (start)
+fpath=(/opt/vagrant/embedded/gems/2.2.19/gems/vagrant-2.2.19/contrib/zsh $fpath)
+compinit
+# <<<<  Vagrant command completion (end)
