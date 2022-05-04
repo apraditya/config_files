@@ -54,7 +54,6 @@ Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 Plug 'kana/vim-textobj-user'
 Plug 'luochen1990/rainbow'
-Plug 'rking/ag.vim'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-dispatch'
@@ -89,6 +88,13 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
 \ }
+
+" Telescope file finder / picker, two above it are dependencies
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'stevearc/dressing.nvim'
 
 "*****************************************************************************
 "" Custom bundles
@@ -402,8 +408,12 @@ if executable('rg')
 endif
 
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>e :FZF -m<CR>
+nnoremap <silent> <leader>b <cmd>Telescope buffers<CR>
+nnoremap <silent> <leader>e <cmd>Telescope find_files<CR>
+nnoremap <leader># <cmd>Telescope grep_string<CR>
+nnoremap <leader>F <cmd>Telescope live_grep<CR>
+nnoremap <C-p> <cmd>Telescope git_files<CR>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>
 "Recovery commands from history through FZF
 nmap <leader>y :History:<CR>
 
