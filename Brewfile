@@ -31,6 +31,7 @@ brew 'yarn'
 brew 'zsh'
 
 cask 'adoptopenjdk'
+cask 'alacritty'
 cask 'brave-browser'
 cask 'cheatsheet'
 cask 'cyberduck'
