@@ -78,6 +78,7 @@ plugins=(
   docker
   dotenv
   evalcache
+  fast-syntax-highlighting
   fzf
   git
   git-flow
@@ -93,7 +94,6 @@ plugins=(
   z
   zsh-autosuggestions
   zsh-completions
-  zsh-syntax-highlighting
 )
 autoload -U compinit && compinit
 
@@ -212,7 +212,7 @@ _evalcache rbenv init --no-rehash - zsh
 
 # Fast Node Manager (fnm)
 export PATH=$HOME/.fnm:$PATH
-_evalcache fnm env
+_evalcache fnm env --use-on-cd
 
 # Fix Ctrl + H does not work
 # https://github.com/neovim/neovim/issues/2048

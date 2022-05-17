@@ -23,9 +23,10 @@ Alright, here we go:
 4. If you want to use NeoVim, link `nvim-bootstrap.vim` to `~/.config/nvim/init.vim` and run `nvim` to install the plugins
 
 5. Optionally (but recommended), install Oh-My-Zsh custom plugins:
-  - [base16-shell](https://github.com/chriskempson/base16-shell)
+  - [evalcache](https://github.com/mroth/evalcache)
+  - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
   - [zsh-completions](https://github.com/zsh-users/zsh-completions)
-  - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+  - [fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)
 
 ### NOTES
 
