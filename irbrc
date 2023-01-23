@@ -27,9 +27,8 @@ rescue LoadError => e
   warn "Couldn't load awesome_print: #{e}"
 end
 
-
 # Prompt behavior
-ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
+ARGV.concat ["--readline", "--prompt-mode", "simple"]
 
 # History
 require 'irb/ext/save-history'
@@ -42,11 +41,10 @@ railsrc_path = File.expand_path('~/.irbrc_rails')
 if ( ENV['RAILS_ENV'] || defined? Rails ) && File.exist?( railsrc_path )
   begin
     load railsrc_path
-  rescue Exception
+  rescue StandardError
     warn "Could not load: #{ railsrc_path } because of #{$!.message}"
   end
 end
-
 
 # Easily print methods local to an object's class
 class Object
