@@ -95,7 +95,7 @@ plugins=(
   zsh-autosuggestions
   zsh-completions
 )
-autoload -U compinit && compinit
+autoload -Uz compinit && compinit
 
 FZF_BASE=$(which fzf)
 ZSH_DOTENV_PROMPT=false
