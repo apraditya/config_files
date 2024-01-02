@@ -1,6 +1,5 @@
 import = ["/Users/apraditya/.config/alacritty/themes/themes/oceanic_next.toml"]
 live_config_reload = true
-"window.opacity" = 1.0
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -376,16 +375,6 @@ mods = "Alt"
 chars = "\u0000"
 key = "Space"
 mods = "Control"
-
-[[keyboard.bindings]]
-chars = "\u001B`"
-key = "Grave"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001B~"
-key = "Grave"
-mods = "Alt|Shift"
 
 [[keyboard.bindings]]
 chars = "\u001B."
