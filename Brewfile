@@ -65,7 +65,7 @@ cask 'vlc'
 cask 'zoom'
 
 mas 'Guidance', id: 412759995
-mas 'LastPass', id: 926036361
+mas 'Bitwarden', id: 1352778147
 mas 'LimeChat', id: 414030210
 mas 'Quran Majeed', id: 411622604
 mas 'Slack', id: 803453959
