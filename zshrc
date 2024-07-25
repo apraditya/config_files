@@ -1,3 +1,7 @@
+if [ -e "/usr/libexec/java_home" ]; then
+  export JAVA_HOME=`/usr/libexec/java_home`
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -211,9 +215,6 @@ findin() {
 
 export PATH=/usr/local/sbin:/usr/local/bin:$HOME/.yarn/bin:$HOME/bin:$PATH
 export GOPATH=/usr/local/opt/go/libexec/bin
-if [ -e "/usr/libexec/java_home" ]; then
-  export JAVA_HOME=`/usr/libexec/java_home`
-fi
 
 # rbenv
 _evalcache rbenv init --no-rehash - zsh
