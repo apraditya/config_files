@@ -215,9 +215,7 @@ findin() {
 
 export PATH=/usr/local/sbin:/usr/local/bin:$HOME/.yarn/bin:$HOME/bin:$PATH
 if [[ -x "$(command -v go)" ]]; then
-  go_install_dir=$(go env GOROOT)
-  export GOPATH=$go_install_dir/bin
-  export PATH=$GOPATH:$PATH
+  export PATH=$(go env GOPATH)/bin:$PATH
 fi
 
 # rbenv
