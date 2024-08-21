@@ -214,7 +214,11 @@ findin() {
 }
 
 export PATH=/usr/local/sbin:/usr/local/bin:$HOME/.yarn/bin:$HOME/bin:$PATH
-export GOPATH=/usr/local/opt/go/libexec/bin
+if [[ -x "$(command -v go)" ]]; then
+  go_install_dir=$(go env GOROOT)
+  export GOPATH=$go_install_dir/bin
+  export PATH=$GOPATH:$PATH
+fi
 
 # rbenv
 _evalcache rbenv init --no-rehash - zsh
