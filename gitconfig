@@ -45,6 +45,7 @@
 	ui = true
 [core]
 	excludesfile = ~/.gitignore
+	editor= nvim
 [format]
   pretty = %Cblue%h%Creset %Cgreen[%cr]%Creset (%an) %s
 [alias]
