@@ -44,19 +44,12 @@ if defined?(PryByebug)
    end
 end
 
-# Use awesome_print (or amazing_print)
+# Use amazing_print
 begin
-  require 'awesome_print'
-  AwesomePrint.pry!
+  require 'amazing_print'
+  AmazingPrint.pry!
 rescue LoadError => err
-  begin
-    puts "no awesome_print :( #{err}"
-    puts "trying amazing_print"
-    require 'amazing_print'
-    AmazingPrint.pry!
-  rescue LoadError => err2
-    puts "no awesome_print :( #{err2}"
-  end
+  puts "no amazing_print :( #{err}"
 end
 
 # Hit Enter to repeat last command

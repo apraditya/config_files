@@ -12,26 +12,18 @@ end
 # Autocomplete
 require 'irb/completion'
 
-# interactive_editor allows using vim from within irb
+# amazing_print
 begin
-  require 'interactive_editor'
+  require 'amazing_print'
+  AmazingPrint.irb!
 rescue LoadError => e
-  warn "Couldn't load interactive_editor: #{e}"
-end
-
-# awesome_print
-begin
-  require 'awesome_print'
-  AwesomePrint.irb!
-rescue LoadError => e
-  warn "Couldn't load awesome_print: #{e}"
+  warn "Couldn't load amazing_print: #{e}"
 end
 
 # Prompt behavior
-ARGV.concat ["--readline", "--prompt-mode", "simple"]
+ARGV.concat ['--readline', '--prompt-mode', 'simple']
 
 # History
-require 'irb/ext/save-history'
 IRB.conf[:EVAL_HISTORY] = 1000
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
