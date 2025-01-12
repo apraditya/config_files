@@ -10,7 +10,6 @@ end
 
 def set_logger_to(logger)
   ActiveRecord::Base.logger = logger
-  ActiveRecord::Base.clear_reloadable_connections!
 end
 
 def efind(email)

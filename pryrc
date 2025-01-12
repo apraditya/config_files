@@ -138,10 +138,6 @@ def do_time(repetitions = 100, &block)
   Benchmark.bm{|b| b.report{repetitions.times(&block)}}
 end
 
-# by default, set up the debug shortcuts
-puts "Loaded ~/.pryrc. Setting up debug shortcuts."
-pd
-
 # Easily print methods local to an object's class
 class Object
   def local_methods
