@@ -132,8 +132,8 @@ export LANG=en_US.UTF-8
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# use vim as an editor
-export EDITOR=vim
+# use nvim as an editor
+export EDITOR=nvim
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
