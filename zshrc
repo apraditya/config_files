@@ -213,6 +213,21 @@ findin() {
   find $2 -type f | xargs grep -i $1
 }
 
+kimi() {
+  export ANTHROPIC_BASE_URL=https://api.moonshot.ai/anthropic
+  export "$(cat ~/.env|grep MOONSHOT_AUTH)"
+  export ANTHROPIC_AUTH_TOKEN=$MOONSHOT_AUTH_TOKEN
+  pnpm dlx @anthropic-ai/claude-code "$@"
+}
+
+qwencode() {
+  export OPENAI_BASE_URL=https://openrouter.ai/api/v1
+  export "$(cat ~/.env|grep OPENROUTER_API_KEY)"
+  export OPENAI_API_KEY=$OPENROUTER_API_KEY
+  export OPENAI_MODEL=openrouter/horizon-beta
+  pnpm dlx @qwen-code/qwen-code "$@"
+}
+
 export PATH=/usr/local/sbin:/usr/local/bin:$HOME/.yarn/bin:$HOME/bin:$PATH
 if [[ -x "$(command -v go)" ]]; then
   export PATH=$(go env GOPATH)/bin:$PATH

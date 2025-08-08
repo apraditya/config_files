@@ -19,8 +19,10 @@ alias gci="git pull --rebase && rake && git push"
 alias tlf="tail -f"
 
 # My own aliases
+alias ccrx="pnpm dlx @musistudio/claude-code-router"
 alias gapcs="git apply --check --stat"
 alias gaprejf="git apply --reject --whitespace=fix"
+alias geminix="pnpm dlx @google/gemini-cli"
 
 # Aliases from Dinesh
 alias ls="ls -alFo"
