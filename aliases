@@ -19,10 +19,14 @@ alias gci="git pull --rebase && rake && git push"
 alias tlf="tail -f"
 
 # My own aliases
+alias bmadmx="pnpm dlx bmad-method"
 alias ccrx="pnpm dlx @musistudio/claude-code-router"
+alias crushx="pnpm dlx @charmland/crush"
 alias gapcs="git apply --check --stat"
 alias gaprejf="git apply --reject --whitespace=fix"
 alias geminix="pnpm dlx @google/gemini-cli"
+alias opencodex="pnpm dlx opencode-ai@latest"
+alias qwencodex="pnpm dlx @qwen-code/qwen-code"
 
 # Aliases from Dinesh
 alias ls="ls -alFo"
