@@ -201,6 +201,42 @@
     }
   },
   "mcp": {
+    "sequential-thinking": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "enabled": true,
+      "environment": {}
+    },
+    "serena": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide-assistant"
+      ],
+      "enabled": true,
+      "environment": {}
+    },
+    "task-master-ai": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "task-master-ai@latest"
+      ],
+      "enabled": true,
+      "environment": {
+        "TASK_MASTER_TOOLS": "standard"
+      }
+    }
   },
   "$schema": "https://opencode.ai/config.json"
 }
