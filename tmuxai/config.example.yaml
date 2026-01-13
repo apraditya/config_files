@@ -1,0 +1,95 @@
+# Set to true to log full AI messages sent and received. Dest: ~/.config/tmuxai/debug/
+debug: false
+
+# Maximum context size in tokens, reaching 80% triggers squashing
+max_context_size: 100000
+
+# Maximum number of lines to capture during each message
+max_capture_lines: 200
+
+# Wait interval when exec pane is considered busy (used in observe and watch modes)
+wait_interval: 5
+
+# If empty uses the first model alphabetically
+default_model: "fast"
+
+# Define at least one model
+models:
+  fast:
+    provider: "zai"
+    api_key: "sk-or-your-api-key"
+    base_url: "https://api.z.ai/api/anthropic"
+    model: "GLM-4.5-Air"
+
+  smart:
+    provider: "openrouter"
+    model: "google/gemini-2.5-prod"
+    api_key: "sk-or-your-openrouter-key"
+
+  # You can use any chat completion compatible endpoint as base_url
+  anthropic-z:
+    provider: "zai"
+    api_key: "sk-or-your-api-key"
+    base_url: "https://api.z.ai/api/anthropic"
+    model: "GLM-4.7"
+
+  local-llama:
+    provider: "openrouter"
+    model: "gemma3:1b"
+    api_key: "sk-or-your-openrouter-key"
+    base_url: http://localhost:11434/v1
+
+  # Responses API
+  codex:
+    provider: "openai"
+    model: "gpt-5-codex"
+    api_key: "sk-or-your-openrouter-key"
+
+  zai:
+    provider: "zai"
+    api_key: "sk-or-your-api-key"
+    base_url: "https://api.z.ai/api/coding/paas/v4"
+    model: "GLM-4.6"
+
+  azure-gpt4:
+    provider: "azure"
+    model: "gpt-4o"
+    api_key: "your-azure-openai-api-key"
+    api_base: "https://your-resource.openai.azure.com/"
+    api_version: "2025-04-01-preview"
+    deployment_name: "gpt-4o"
+
+# Confirm before AI executes a command
+exec_confirm: true
+
+# Confirm before AI sends a key
+send_keys_confirm: true
+
+# Confirm before AI pastes a multiline text
+paste_multiline_confirm: true
+
+# If matched, skips confirmation prompt
+whitelist_patterns:
+  - '^find(\s+.*)?$'
+  - '^pwd\s*$'
+  - '^cat(\s+.*)?$'
+
+# Always shows confirmation prompt for those patterns
+blacklist_patterns:
+  - 'rm\s+'
+  - 'mv\s+'
+  - 'dd\s+'
+
+# Prompts customization, see prompts.go for more details
+prompts:
+  base_system: |
+    xxx
+
+  chat_assistant: |
+     xxx
+
+  chat_assistant_prepared: |
+     xxx
+
+  watch: |
+     xxx
