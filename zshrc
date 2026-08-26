@@ -10,7 +10,12 @@ fi
 export ZSH=$HOME/.oh-my-zsh
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config 'unicorn')"
+  if [[ -x "$(command -v oh-my-posh)" ]]; then
+    eval "$(oh-my-posh init zsh --config 'unicorn')"
+  else
+    # ZSH_THEME="candy"
+    ZSH_THEME="powerlevel10k/powerlevel10k"
+  fi
 else
   # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
   # Initialization code that may require console input (password prompts, [y/n]
@@ -238,12 +243,15 @@ if [[ -x "$(command -v go)" ]]; then
 fi
 
 # rbenv
-_evalcache rbenv init --no-rehash - zsh
-
+if [[ -x "$(command -v rbenv)" ]]; then
+  _evalcache rbenv init --no-rehash - zsh
+fi
 
 # Fast Node Manager (fnm)
-export PATH=$HOME/.fnm:$PATH
-_evalcache fnm env --use-on-cd
+if [[ -x "$(command -v fnm)" ]]; then
+  export PATH=$HOME/.fnm:$PATH
+  _evalcache fnm env --use-on-cd
+fi
 
 # Fix Ctrl + H does not work
 # https://github.com/neovim/neovim/issues/2048
@@ -268,6 +276,8 @@ compinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-. "$HOME/.atuin/bin/env"
 
-_evalcache atuin init zsh
+if [ -f "${HOME}/.atuin/bin/env" ]; then
+  . "$HOME/.atuin/bin/env"
+  _evalcache atuin init zsh
+fi
