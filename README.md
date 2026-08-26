@@ -28,6 +28,21 @@ Alright, here we go:
   - [zsh-completions](https://github.com/zsh-users/zsh-completions)
   - [fast-syntax-highlighting](https://github.com/zdharma-continuum/fast-syntax-highlighting)
 
+  If you have `gh` working, run the following to install the plugins:
+
+  ```sh
+  gh repo clone mroth/evalcache $ZSH_CUSTOM/plugins/evalcache 
+  gh repo clone zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  gh repo clone zsh-users/zsh-completions $ZSH_CUSTOM/plugins/zsh-completions
+  gh repo clone zdharma-continuum/fast-syntax-highlighting $ZSH_CUSTOM/plugins/fast-syntax-highlighting
+  ```
+
+  and run the theme:
+
+  ```sh
+  gh repo clone romkatv/powerlevel10k $ZSH_CUSTOM/themes/powerlevel10k
+  ```
+
 ### NOTES
 
 1. To get completion for `git flow` working (on MacOS), install `git` with Homebrew without the completions, `brew install git --without-completions`
