@@ -1,0 +1,100 @@
+# Codex CLI routed through the local FreeLLMAPI gateway.
+#
+# Lives in its own CODEX_HOME (~/.codex-fla) so ~/.codex stays untouched.
+# Launch with the `codexfla` function (zshrc), which sets CODEX_HOME to this
+# directory and supplies FREELLMAPI_API_KEY from ~/.env (the provider reads the
+# key from that env var).
+#
+# Reproduced from: npx freellmapi setup-codex --url http://127.0.0.1:31415
+
+model = "auto"
+model_provider = "freellmapi"
+model_context_window = 256000
+model_auto_compact_token_limit = 230400
+tool_output_token_limit = 20000
+
+notify = ["/Users/apraditya/.codex-fla/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+
+[model_providers.freellmapi]
+name = "FreeLLMAPI"
+base_url = "http://127.0.0.1:31415/v1"
+wire_api = "responses"
+env_key = "FREELLMAPI_API_KEY"
+requires_openai_auth = false
+
+[tui]
+screen_reader_detection_done = true
+
+[tui.model_availability_nux]
+"gpt-6.1-sol" = 2
+
+[projects."/Users/apraditya/Projects/DaaS/tiptop-products-api"]
+trust_level = "trusted"
+
+[hooks.state]
+
+[hooks.state."/Users/apraditya/Projects/DaaS/tiptop-products-api/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:b3d31ccc7f79c10a7aa8f90b67d5b299af79445acd9325fe6abd0c92219b7f4e"
+
+[desktop]
+followUpQueueMode = "steer"
+
+[marketplaces.openai-bundled]
+source_type = "local"
+source = "/Users/apraditya/.codex-fla/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+source_type = "local"
+source = "/Users/apraditya/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/apraditya/.codex-fla:/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
+CODEX_HOME = "/Users/apraditya/.codex-fla"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab,mcpapps"
+BROWSER_USE_TINYSKY_ENABLED = "1"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.1007.71326"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/apraditya/.codex-fla/plugins/cache/openai-bundled/browser/26.1007.71326/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+SKY_CUA_SERVICE_PATH = "/Users/apraditya/.codex-fla/computer-use/Codex Computer Use.app"
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"

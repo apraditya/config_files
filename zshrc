@@ -237,7 +237,28 @@ qwencode() {
   pnpm dlx @qwen-code/qwen-code "$@"
 }
 
-export PATH=/usr/local/sbin:/usr/local/bin:$HOME/.yarn/bin:$HOME/bin:$PATH
+# Codex CLI via local FreeLLMAPI gateway, isolated from ~/.codex (config: codex-fla/ in this repo).
+# Key is read from ~/.env so it never lands in this repo.
+codexfla() {
+  FREELLMAPI_API_KEY="$(grep '^FREELLMAPI_API_KEY=' ~/.env | cut -d= -f2-)" \
+    CODEX_HOME="$HOME/.codex-fla" \
+    codex "$@"
+}
+
+# Codex desktop app (bundle com.openai.codex) from the terminal
+codexdesk() {
+  open -b com.openai.codex "$@"
+}
+
+# Codex desktop via the FreeLLMAPI gateway. NOTE: the app is single-instance —
+# if it is already running, `open` only activates it and ignores --env, so quit first.
+codexdeskfla() {
+  open -b com.openai.codex \
+    --env "CODEX_HOME=$HOME/.codex-fla" \
+    --env "FREELLMAPI_API_KEY=$(grep '^FREELLMAPI_API_KEY=' ~/.env | cut -d= -f2-)"
+}
+
+export PATH=/opt/homebrew/bin:/usr/local/sbin:/usr/local/bin:$HOME/.yarn/bin:$HOME/bin:$PATH
 if [[ -x "$(command -v go)" ]]; then
   export PATH=$(go env GOPATH)/bin:$PATH
 fi

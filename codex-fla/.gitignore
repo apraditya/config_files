@@ -1,0 +1,5 @@
+# CODEX_HOME state (sessions, history, auth) stays out of the repo;
+# only the config itself is tracked.
+*
+!config.toml
+!.gitignore
